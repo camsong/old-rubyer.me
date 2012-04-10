@@ -1,0 +1,959 @@
+
+
+
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>windows下安装DevKit | Ruby迷</title>
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="http://rubyer.me/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="http://rubyer.me/comments/feed">
+<link rel="pingback" href="http://rubyer.me/xmlrpc.php">
+<!-- style START --><style type="text/css" media="screen">@import url( http://rubyer.me/wp-content/themes/blocks2/style.css );</style>
+<link rel="stylesheet" href="http://rubyer.me/wp-content/themes/blocks2/chinese.css" type="text/css" media="screen">
+<!--[if IE]>
+		<link rel="stylesheet" href="http://rubyer.me/wp-content/themes/blocks2/ie.css" type="text/css" media="screen" />
+	<![endif]--><!-- style END --><!-- script START --><!-- script END --><link rel="alternate" type="application/rss+xml" title="Ruby迷 » windows下安装DevKit 评论 Feed" href="http://rubyer.me/blog/134/feed">
+<link rel="stylesheet" id="wp-pagenavi-css" href="http://rubyer.me/wp-content/themes/blocks2/pagenavi-css.css?ver=2.70" type="text/css" media="all">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rubyer.me/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://rubyer.me/wp-includes/wlwmanifest.xml">
+<link rel="prev" title="Wget 下载常用参数" href="http://rubyer.me/blog/111">
+<link rel="next" title="gem install mysql2 错误解决" href="http://rubyer.me/blog/138">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="shortlink" href="http://rubyer.me/?p=134">
+<!-- All in One SEO Pack 1.6.13.8 by Michael Torbert of Semper Fi Web Design[326,371] --><meta name="keywords" content="ruby,ror安装">
+<link rel="canonical" href="http://rubyer.me/blog/134">
+<!-- /all in one seo pack --><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<!-- Wordpress Popular Posts v2.2.1 --><link rel="stylesheet" href="http://rubyer.me/wp-content/plugins/wordpress-popular-posts/style/wpp.css" type="text/css" media="screen">
+<!-- End Wordpress Popular Posts v2.2.1 --><!-- Wordpress Popular Posts v2.2.1 --><!-- End Wordpress Popular Posts v2.2.1 --><meta id="syntaxhighlighteranchor" name="syntaxhighlighter-version" content="3.1.3">
+<div id="wrap">
+		<div id="container">
+
+<!-- header START -->
+<div id="header">
+	<div id="title">
+		<h1><a href="http://rubyer.me/">Ruby迷</a></h1>
+		<div id="tagline">spend less, do more</div>
+	</div>
+
+	<!-- WordPress searchbox -->
+	<div class="searchbox">
+		<form action="http://rubyer.me/" method="get">
+			<div class="content">
+				<input type="text" class="textfield" name="s" size="24" value=""><input type="submit" class="button" value="搜索">
+</div>
+		</form>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- menubar START -->
+	<div id="navigation">
+		<ul id="menubar">
+<li class="page_item"><a title="首页" href="http://rubyer.me/">首页</a></li>
+				<li class="cat-item cat-item-6">
+<a href="http://rubyer.me/blog/category/rails" title="查看 Rails 下的所有文章">Rails</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="http://rubyer.me/blog/category/ruby" title="查看 Ruby 下的所有文章">Ruby</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="http://rubyer.me/blog/category/no" title="查看 其它 下的所有文章">其它</a>
+</li>
+	<li class="cat-item cat-item-12">
+<a href="http://rubyer.me/blog/category/linux-mac" title="查看 Linux/Mac 下的所有文章">Linux/Mac</a>
+</li>
+	<li class="cat-item cat-item-13">
+<a href="http://rubyer.me/blog/category/ruby-install" title="查看 ROR安装 下的所有文章">ROR安装</a>
+</li>
+	<li class="cat-item cat-item-103">
+<a href="http://rubyer.me/blog/category/ruby-diary" title="查看 一日一技 下的所有文章">一日一技</a>
+</li>
+                        <li><a href="/about">关于我</a></li>
+		</ul>
+<div id="subscribe" class="feed">
+			<a title="订阅这个博客的文章" class="feedlink" href="http://rubyer.me/feed"><abbr title="Really Simple Syndication">RSS</abbr> 订阅</a>
+							<ul>
+<li><a rel="external nofollow" title="订阅到鲜果" href="http://www.xianguo.com/subscribe.php?url=http://rubyer.me/feed">					鲜果	</a></li>
+					<li><a rel="external nofollow" title="订阅到抓虾" href="http://www.zhuaxia.com/add_channel.php?url=http://rubyer.me/feed">					抓虾	</a></li>
+					<li><a rel="external nofollow" title="订阅到有道" href="http://reader.yodao.com/#url=http://rubyer.me/feed">								有道	</a></li>
+					<li><a rel="external nofollow" title="订阅到 Google" href="http://fusion.google.com/add?feedurl=http://rubyer.me/feed">						 Google	</a></li>
+					<li><a rel="external nofollow" title="订阅到 netvibes" href="http://www.netvibes.com/subscribe.php?url=http://rubyer.me/feed">					 netvibes	</a></li>
+					<li><a rel="external nofollow" title="订阅到 newsgator" href="http://www.newsgator.com/ngs/subscriber/subfext.aspx?url=http://rubyer.me/feed">	 newsgator</a></li>
+					<li><a rel="external nofollow" title="订阅到 Bloglines" href="http://www.bloglines.com/sub/http://rubyer.me/feed">								 Bloglines</a></li>
+					<li><a rel="external nofollow" title="订阅到哪吒" href="http://inezha.com/add?url=http://rubyer.me/feed">									哪吒	</a></li>
+				</ul>
+</div>
+				
+		<span id="copyright">
+			© 2011-2012 Ruby迷		</span>
+		<div class="fixed"></div>
+	</div>
+	<!-- menubar END -->
+
+	<!-- main START -->
+	<div id="main">
+
+<div class="post" id="post-134">
+	<h2 class="title">windows下安装DevKit</h2>
+	<div class="meta">
+		<div class="info">
+			六 4th, 2011								</div>
+		<div class="comments">
+			<a href="#respond">发表评论</a>
+						 | <a href="http://rubyer.me/blog/134/trackback" rel="trackback">Trackback</a>
+								</div>
+		<div class="fixed"></div>
+	</div>
+
+	<div class="content">
+		<h1>超简单的办法</h1>
+<p>如果你是ruby刚入门，推荐这个方法。</p>
+<p><a href="http://rubyer.me/blog/1509" title="Windows下安装Ruby on Rails最简单的方法" target="_blank">http://rubyer.me/blog/1509</a></p>
+<h1>如果你想折腾就这样</h1>
+<p>如果通过上面方法安装DevKit成功率会比较高，下面这种方法不一定能成。但如果你想折腾，可以来试试下面的手动安装。</p>
+<p>windows下安装或升级时gem经常会碰到</p>
+<pre class="brush: bash; title: ; notranslate" title="">Please update your PATH to include build tools or download the DevKit
+from 'http://rubyinstaller.org/downloads' and follow the instructions
+at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'</pre>
+<p>这是因为没有安装DevKit的缘故。</p>
+<p><span id="more-134"></span></p>
+<p>DevKit 是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make, gcc, sh来进行编译。注：这个方法目前仅支持通过RubyInstaller安装的Ruby，如果不是建议你重新安装。安装方法：双击下载的7z文件，指定解压路径，路径中不能有空格。如C:\DevKit，这个路径就是&lt;DEVKIT_INSTALL_DIR&gt;。</p>
+<pre class="brush: bash; title: ; notranslate" title="">&gt; cd &lt;DEVKIT_INSTALL_DIR&gt;
+&gt; ruby dk.rb init
+#生成config.yml，这里会检查将要添加DevKit支持的Ruby列表，只支持通过RubyInstaller安装的Ruby
+#如果这里列出的Ruby与你的要求不符，可以手动修改
+&gt; ruby dk.rb review  #检查要添加DevKit支持的Ruby列表是否有误，可以略过
+&gt; ruby dk.rb install
+[INFO] Updating convenience notice gem override for 'C:/Ruby192'
+[INFO] Installing 'C:/Ruby192/lib/ruby/site_ruby/devkit.rb'</pre>
+<p>检查是否安装成功</p>
+<pre class="brush: bash; title: ; notranslate" title="">&gt; gem install rdiscount --platform=ruby
+Fetching: rdiscount-1.6.8.gem (100%)
+Temporarily enhancing PATH to include DevKit...
+Building native extensions.  This could take a while...
+Successfully installed rdiscount-1.6.8
+1 gem installed
+Installing ri documentation for rdiscount-1.6.8...
+Installing RDoc documentation for rdiscount-1.6.8...</pre>
+<p>如果能安装rdiscount成功说明安装DevKit成功。</p>
+<p>英文原版地址：<a href="https://github.com/oneclick/rubyinstaller/wiki/development-kit" target="_blank">https://github.com/oneclick/rubyinstaller/wiki/development-kit</a></p>
+		<div class="fixed"></div>
+					<div class="tags">标签: <a href="http://rubyer.me/blog/tag/ruby-label" rel="tag">Ruby</a>
+</div>
+			</div>
+
+<div style="padding: 5px 10px 5px 15px;
+margin-bottom: 10px;background: #F6F9E7;color:green;">
+&gt;&gt;原创文章，欢迎转载。转载请注明：转载自<a href="http://rubyer.me/" title="Ruby迷" target="_blank">Ruby迷</a>，谢谢！<br>
+&gt;&gt;原文链接地址：<a href="http://rubyer.me/blog/134" rel="bookmark" title="windows下安装DevKit" target="_blank">windows下安装DevKit</a><br>
+</div>
+
+</div>
+
+
+<!-- related posts -->
+<div id="related_posts">
+<h2 class="related_post_title">猜你也喜欢</h2>
+<ul class="related_post">
+<li>
+<a href="http://rubyer.me/blog/1558" title="RubyMine 4正式版发布，知名的Ruby IDE">RubyMine 4正式版发布，知名的Ruby IDE</a> (7)<br><small>RubyMine是JetBrain公司研...</small>
+</li>
+<li>
+<a href="http://rubyer.me/blog/1384" title="一次有意思的“最大公约数”算法优化历程">一次有意思的“最大公约数”算法优化历程</a> (3)<br><small>最近在微博上闲扯出最大公约数（GCD：g...</small>
+</li>
+<li>
+<a href="http://rubyer.me/blog/1223" title="使用spreadsheet操作Excel">使用spreadsheet操作Excel</a> (0)<br><small>使用spreadsheet操作Excel...</small>
+</li>
+<li>
+<a href="http://rubyer.me/blog/1168" title="Ruby,Rails分享PPT">Ruby,Rails分享PPT</a> (7)<br><small>Ruby rails分享View mor...</small>
+</li>
+<li>
+<a href="http://rubyer.me/blog/1133" title="使用Net::SSH和Net::SCP编写Linux服务器管理脚本">使用Net::SSH和Net::SCP编写Linux服务器管理脚本</a> (0)<br><small>有没有这样一个需求：
+同时向几十上百台...</small>
+</li>
+</ul>
+</div>
+<div class="fixed"></div>
+<div id="postnavi">
+	<span class="alignleft floatleft"><a href="http://rubyer.me/blog/138" rel="next">gem install mysql2 错误解决</a></span>
+	<span class="alignright floatright"><a href="http://rubyer.me/blog/111" rel="prev">Wget 下载常用参数</a></span>
+	<div class="fixed"></div>
+</div>
+
+
+
+
+
+	<ol class="commentlist">
+<li id="comment-630" class="comment pingcomment">
+
+		<div class="info pinginfo">
+						<div class="author">
+									<a class="authorname" id="commentauthor-630" href="http://rubyer.me/blog/1509" rel="external nofollow">
+				
+				Windows下安装Ruby on Rails最简单的方法 | Ruby迷
+									</a>
+								<div class="date">二 14th, 201209:11</div>
+			</div>
+			<div class="count">
+												<a href="#comment-630">#1</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+		
+		<div class="fixed"></div>
+
+</li>
+	<li id="comment-602" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/6b7a70fff289094866f2f5f60df61a2b?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-602">
+				
+				larryzheng
+									</span>
+								<div class="date">二 12th, 201202:25</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=602#respond" onclick='return addComment.moveForm("comment-602", "602", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-602', 'comment-602', 'commentbody-602', 'comment');">引用</a> | 
+												<a href="#comment-602">#2</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-602">
+					<p>老宋，想请教下我在安装rdiscount的时候报错，不知是何原因<br>
+C:\DEVKIT_INSTALL_DIR&gt;gem install rdiscount –platform=ruby<br>
+ERROR:  While executing gem … (OptionParser::InvalidOption)<br>
+    invalid option: –platform=ruby<br>
+非常感谢。</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-608" class="comment admincomment">
+
+		<div class="info admininfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-608">
+				
+				老宋
+									</span>
+								<div class="date">二 12th, 201211:48</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=608#respond" onclick='return addComment.moveForm("comment-608", "608", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-608', 'comment-608', 'commentbody-608', 'comment');">引用</a> | 
+												<a href="#comment-608">#3</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-608">
+					<p>不如你试一下<a href="http://railsinstaller.org/" rel="nofollow">rails installer</a>吧，会自动安装ruby1.9.2+rails+devkit。</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-627" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/6b7a70fff289094866f2f5f60df61a2b?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-627">
+				
+				larryzheng
+									</span>
+								<div class="date">二 13th, 201223:56</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=627#respond" onclick='return addComment.moveForm("comment-627", "627", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-627', 'comment-627', 'commentbody-627', 'comment');">引用</a> | 
+												<a href="#comment-627">#4</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-627">
+					<p>嗯 我后来确实是用的 rails installer 真的可以啊<br>
+希望今后能多多指教哈</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-462" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://1.gravatar.com/avatar/d0aa94b6b25657acb0b659ad74f38b96?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<a class="authorname" id="commentauthor-462" href="http://aguegu.net" rel="external nofollow">
+				
+				aguegu
+									</a>
+								<div class="date">一 30th, 201223:53</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=462#respond" onclick='return addComment.moveForm("comment-462", "462", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-462', 'comment-462', 'commentbody-462', 'comment');">引用</a> | 
+												<a href="#comment-462">#5</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-462">
+					<p>成功安装，而且解决了 json 安装错误的问题。一直想用ror，因为版本升级过快、配置麻烦、教材过时等诸多接口，一直启动不起来。很高兴找到Ruby迷</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-463" class="comment admincomment">
+
+		<div class="info admininfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-463">
+				
+				老宋
+									</span>
+								<div class="date">一 31st, 201208:32</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=463#respond" onclick='return addComment.moveForm("comment-463", "463", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-463', 'comment-463', 'commentbody-463', 'comment');">引用</a> | 
+												<a href="#comment-463">#6</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-463">
+					<p>有什么错误我可以帮你调哈。<br>
+ror搭环境确实有点难，但一旦入门了，很容易“迷”:)</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-464" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://1.gravatar.com/avatar/d0aa94b6b25657acb0b659ad74f38b96?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<a class="authorname" id="commentauthor-464" href="http://aguegu.net" rel="external nofollow">
+				
+				aguegu
+									</a>
+								<div class="date">一 31st, 201210:10</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=464#respond" onclick='return addComment.moveForm("comment-464", "464", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-464', 'comment-464', 'commentbody-464', 'comment');">引用</a> | 
+												<a href="#comment-464">#7</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-464">
+					<p>补充自己的一点体会：<br>
+1. 要测试安装是否成功，进一个应用，执行 bundle install 就好了<br>
+2. 如果之前可能安装过 DevKit 但是搞不清楚自己有没有有没有配置好的话，再次安装会出现警告，并且退出。可以运行“ruby dk.rb install –force”，我这边就是这样装上了~</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-286" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://1.gravatar.com/avatar/dda17f8b9a64b81c9000b7241d7ba0e6?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-286">
+				
+				cloverclamp
+									</span>
+								<div class="date">十二 28th, 201110:35</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=286#respond" onclick='return addComment.moveForm("comment-286", "286", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-286', 'comment-286', 'commentbody-286', 'comment');">引用</a> | 
+												<a href="#comment-286">#8</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-286">
+					<p>检验是否安装成功&gt; gem install rdiscount –platform=ruby时，<br>
+报错：<br>
+ERROR:  Error installing rdiscount:<br>
+             The ‘rdiscount’ native gem requires installed build tools.<br>
+Please update your PATH to include build tools or download the DevK<br>
+from ‘<a href="http://rubyinstaller.org/downloads" rel="nofollow">http://rubyinstaller.org/downloads</a>‘ and follow the instructio<br>
+at ‘<a href="http://github.com/oneclick/rubyinstaller/wiki/Development-Kit" rel="nofollow">http://github.com/oneclick/rubyinstaller/wiki/Development-Kit</a>‘<br>
+不知问题出在哪里，万分感谢</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-289" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-289">
+				
+				老宋
+									</span>
+								<div class="date">十二 28th, 201117:47</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=289#respond" onclick='return addComment.moveForm("comment-289", "289", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-289', 'comment-289', 'commentbody-289', 'comment');">引用</a> | 
+												<a href="#comment-289">#9</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-289">
+					<p>需要安装Devkit，参考：<a href="http://rubyer.me/blog/134" title="windows下安装DevKit" target="_blank" rel="nofollow">http://rubyer.me/blog/134</a></p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-293" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://1.gravatar.com/avatar/dda17f8b9a64b81c9000b7241d7ba0e6?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-293">
+				
+				cloverclamp
+									</span>
+								<div class="date">十二 29th, 201108:59</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=293#respond" onclick='return addComment.moveForm("comment-293", "293", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-293', 'comment-293', 'commentbody-293', 'comment');">引用</a> | 
+												<a href="#comment-293">#10</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-293">
+					<p>非常感谢~<br>
+DevKit安装了，以下几步都执行成功了：<br>
+&gt; cd<br>
+&gt; ruby dk.rb init<br>
+#生成config.yml，这里会检查将要添加DevKit支持的Ruby列表，只支持通过RubyInstaller安装的Ruby<br>
+#如果这里列出的Ruby与你的要求不符，可以手动修改<br>
+&gt; ruby dk.rb review  #检查要添加DevKit支持的Ruby列表是否有误，可以略过<br>
+&gt; ruby dk.rb install<br>
+[INFO] Updating convenience notice gem override for ‘C:/Ruby192′<br>
+[INFO] Installing ‘C:/Ruby192/lib/ruby/site_ruby/devkit.rb’<br>
+但在检验的时候报了上面的错，是因为安装DevKit没有成功吗？</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-296" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-296">
+				
+				老宋
+									</span>
+								<div class="date">十二 29th, 201114:32</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=296#respond" onclick='return addComment.moveForm("comment-296", "296", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-296', 'comment-296', 'commentbody-296', 'comment');">引用</a> | 
+												<a href="#comment-296">#11</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-296">
+					<p>上面是info信息，不是错误呀</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-299" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://1.gravatar.com/avatar/dda17f8b9a64b81c9000b7241d7ba0e6?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-299">
+				
+				cloverclamp
+									</span>
+								<div class="date">十二 30th, 201112:40</div>
+			</div>
+			<div class="count">
+																									<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-299', 'comment-299', 'commentbody-299', 'comment');">引用</a> | 
+												<a href="#comment-299">#12</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-299">
+					<p>我执行的顺序：<br>
+1. 安装DevKit<br>
+2. 安装info出现，一切正常，准备检验<br>
+3. 检验是否安装成功&gt; gem install rdiscount –platform=ruby<br>
+结果报错：<br>
+ERROR: Error installing rdiscount:<br>
+The ‘rdiscount’ native gem requires installed build tools.<br>
+Please update your PATH to include build tools or download the DevK<br>
+from ‘http://rubyinstaller.org/downloads‘ and follow the instructio<br>
+at ‘http://github.com/oneclick/rubyinstaller/wiki/Development-Kit‘</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-195" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/66965b5b257cdd31441114b800dfc467?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-195">
+				
+				powerwareeasyman
+									</span>
+								<div class="date">十二 12th, 201116:47</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=195#respond" onclick='return addComment.moveForm("comment-195", "195", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-195', 'comment-195', 'commentbody-195', 'comment');">引用</a> | 
+												<a href="#comment-195">#13</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-195">
+					<p>我下载的devkit-3.4.5r3-20091110.7z解压后再devkit目录中为何没有dk.rb呢？</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+	<li id="comment-105" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/466f1d4e73dc52aa000a34fb242bdd6c?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-105">
+				
+				john1king
+									</span>
+								<div class="date">十一 13th, 201108:12</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=105#respond" onclick='return addComment.moveForm("comment-105", "105", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-105', 'comment-105', 'commentbody-105', 'comment');">引用</a> | 
+												<a href="#comment-105">#14</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-105">
+					<p>非常感谢，最近装好几个gem都报这种错误。<br>
+还有一个问题请教博主，装了devkit后windows还有什么多版本共存的方案吗？</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-115" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-115">
+				
+				老宋
+									</span>
+								<div class="date">十一 13th, 201110:55</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=115#respond" onclick='return addComment.moveForm("comment-115", "115", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-115', 'comment-115', 'commentbody-115', 'comment');">引用</a> | 
+												<a href="#comment-115">#15</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-115">
+					<p>如果想在Windows下玩Ruby，Devkit迟早是要装的。你说的多版本是指Ruby多版本共存吧？RVM肯定不行，听说pik不错，我最近也正准备试一下：https://github.com/vertiginous/pik</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+	<li id="comment-194" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/66965b5b257cdd31441114b800dfc467?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-194">
+				
+				菜鸟
+									</span>
+								<div class="date">十二 12th, 201116:17</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=194#respond" onclick='return addComment.moveForm("comment-194", "194", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-194', 'comment-194', 'commentbody-194', 'comment');">引用</a> | 
+												<a href="#comment-194">#16</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-194">
+					<p>为什么我下载的devkit-3.4.5r3-20091110.7z解压后，在devkit目录里没有dk.rb文件呢？</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class="children">
+<li id="comment-204" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt="" src="http://0.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653?s=24&amp;d=identicon&amp;r=G" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="author">
+									<span class="authorname" id="commentauthor-204">
+				
+				老宋
+									</span>
+								<div class="date">十二 13th, 201109:31</div>
+			</div>
+			<div class="count">
+															<a class="comment-reply-link" href="/blog/134?replytocom=204#respond" onclick='return addComment.moveForm("comment-204", "204", "respond", "134")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-204', 'comment-204', 'commentbody-204', 'comment');">引用</a> | 
+												<a href="#comment-204">#17</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-204">
+					<p>下载后的devkit安装包其实是一个自动解压的压缩文件，直接用winrar打开，如果有dk.rb那肯定是解压时出的问题，检查下是否被当作病毒删了。如果winrar打开后没有找到dk.rb，那就下载不完全，重新下载。这两天网站槽G***F***W，回复有点晚，希望对你有帮助。</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-51" class="comment pingcomment">
+
+		<div class="info pinginfo">
+						<div class="author">
+									<a class="authorname" id="commentauthor-51" href="http://www.hoowolf.net/2011/09/15/the-development-of-ruby-on-rails/" rel="external nofollow">
+				
+				Ruby on Rails开发初步 – 胡太狼，你在哪儿？
+									</a>
+								<div class="date">九 15th, 201119:58</div>
+			</div>
+			<div class="count">
+												<a href="#comment-51">#18</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+		
+		<div class="fixed"></div>
+
+</li>
+	<li id="comment-5" class="comment pingcomment">
+
+		<div class="info pinginfo">
+						<div class="author">
+									<a class="authorname" id="commentauthor-5" href="http://rubyer.me/blog/138" rel="external nofollow">
+				
+				gem install mysql2 错误解决 | Ruby 迷
+									</a>
+								<div class="date">六 4th, 201110:56</div>
+			</div>
+			<div class="count">
+												<a href="#comment-5">#19</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+		
+		<div class="fixed"></div>
+
+</li>
+	</ol>
+<div id="respond">
+	<form id="commentform" action="http://rubyer.me/wp-comments-post.php" method="post">
+
+					<a rel="nofollow" id="cancel-comment-reply-link" href="/blog/134#respond" style="display:none;">Cancel reply</a>		
+		<!-- comment info -->
+					
+			<div id="author_info">
+				<div class="row">
+					<input type="text" name="author" id="author" class="textfield" value="" size="24" tabindex="1"><label for="author" class="small">昵称 (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="email" id="email" class="textfield" value="" size="24" tabindex="2"><label for="email" class="small">电子邮箱 (我们会为您保密) (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="url" id="url" class="textfield" value="" size="24" tabindex="3"><label for="url" class="small">网址</label>
+				</div>
+			</div>
+
+			
+		
+	<!-- comment input -->
+	<div class="row">
+		<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+</div>
+
+	<!-- comment submit and rss -->
+	<div id="submitbox">
+		<a class="feed" href="feed:http://rubyer.me/comments/feed">订阅评论</a>
+		<input name="submit" type="submit" id="submit" class="button" tabindex="5" value="提交评论"><input type="hidden" name="comment_post_ID" value="134"><div class="fixed"></div>
+	</div>
+
+			<input type="hidden" name="comment_post_ID" value="134" id="comment_post_ID"><input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</form>
+	</div>
+
+			
+	
+
+	</div>
+	<!-- main END -->
+
+		
+<!-- sidebar START -->
+<div id="sidebar">
+
+	<!-- showcase -->
+	
+<!-- Wordpress Popular Posts Plugin v2.2.1 [W] [weekly] [regular] -->
+<div class="widget popular-posts">
+<h3>最受欢迎</h3>
+<ul>
+<li>
+<a href="http://rubyer.me/blog/134" title="windows下安装DevKit"><span class="wpp-post-title">windows下安装DevKit</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/84" title="ROR开发IDE比较：Aptana Studio、RubyMine、NetBeans"><span class="wpp-post-title">ROR开发IDE比较：Aptana Studio、RubyMine、NetBeans</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/1509" title="Windows下安装Ruby on Rails最简单的方法"><span class="wpp-post-title">Windows下安装Ruby on Rails最简单的方法</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/757" title="常用原型图设计工具Balsamiq Mockups、Axure RP、Pencil对比"><span class="wpp-post-title">常用原型图设计工具Balsamiq Mockups、Axure RP、Pencil对比</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/1558" title="RubyMine 4正式版发布，知名的Ruby IDE"><span class="wpp-post-title">RubyMine 4正式版发布，知名的Ruby IDE</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/999" title="创建基于Rails 3的纯净Ajax CRUD程序"><span class="wpp-post-title">创建基于Rails 3的纯净Ajax CRUD程序</span></a> </li>
+<li>
+<a href="http://rubyer.me/about" title="关于老宋"><span class="wpp-post-title">关于老宋</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/638" title="Ubuntu Linux下安装 Redis 并配置开机启动"><span class="wpp-post-title">Ubuntu Linux下安装 Redis 并配置开机启动</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/138" title="gem install mysql2 错误解决"><span class="wpp-post-title">gem install mysql2 错误解决</span></a> </li>
+<li>
+<a href="http://rubyer.me/blog/941" title="提高rails new时bundle install运行速度"><span class="wpp-post-title">提高rails new时bundle install运行速度</span></a> </li>
+
+</ul>
+</div>
+<!-- End Wordpress Popular Posts Plugin v2.2.1 -->
+		<div class="widget widget_recent_entries">		<h3>最新文章</h3>		<ul>
+<li><a href="http://rubyer.me/blog/1661" title="Rails 开发环境日志过大时自动清理">Rails 开发环境日志过大时自动清理</a></li>
+				<li><a href="http://rubyer.me/blog/1641" title="reverse_merge为方法设置默认参数的技巧">reverse_merge为方法设置默认参数的技巧</a></li>
+				<li><a href="http://rubyer.me/blog/1669" title="让Ruby一个函数返回多个值">让Ruby一个函数返回多个值</a></li>
+				<li><a href="http://rubyer.me/blog/1637" title="ERB中&lt;% ... -%&gt; 与 &lt;% ... %&gt;的不同">ERB中 与 的不同</a></li>
+				<li><a href="http://rubyer.me/blog/1632" title="content_for与provider的比较">content_for与provider的比较</a></li>
+				</ul>
+</div>
+<div class="widget widget_tag_cloud">
+<h3>标签</h3>
+<div class="tagcloud">
+<a href="http://rubyer.me/blog/tag/active-record" class="tag-link-53" title="6 个话题" style="font-size: 13.029126213592pt;">Active Record</a>
+<a href="http://rubyer.me/blog/tag/assets-pipeline" class="tag-link-63" title="2 个话题" style="font-size: 8pt;">Assets Pipeline</a>
+<a href="http://rubyer.me/blog/tag/authentication" class="tag-link-87" title="2 个话题" style="font-size: 8pt;">Authentication</a>
+<a href="http://rubyer.me/blog/tag/bundle" class="tag-link-55" title="3 个话题" style="font-size: 9.631067961165pt;">bundle</a>
+<a href="http://rubyer.me/blog/tag/csdn" class="tag-link-163" title="3 个话题" style="font-size: 9.631067961165pt;">CSDN</a>
+<a href="http://rubyer.me/blog/tag/debug" class="tag-link-106" title="3 个话题" style="font-size: 9.631067961165pt;">debug</a>
+<a href="http://rubyer.me/blog/tag/gem" class="tag-link-82" title="3 个话题" style="font-size: 9.631067961165pt;">gem</a>
+<a href="http://rubyer.me/blog/tag/git" class="tag-link-79" title="6 个话题" style="font-size: 13.029126213592pt;">git</a>
+<a href="http://rubyer.me/blog/tag/has_secure_password" class="tag-link-89" title="2 个话题" style="font-size: 8pt;">has_secure_password</a>
+<a href="http://rubyer.me/blog/tag/ide" class="tag-link-43" title="4 个话题" style="font-size: 10.990291262136pt;">IDE</a>
+<a href="http://rubyer.me/blog/tag/javascript" class="tag-link-37" title="2 个话题" style="font-size: 8pt;">javascript</a>
+<a href="http://rubyer.me/blog/tag/jquery" class="tag-link-50" title="5 个话题" style="font-size: 12.077669902913pt;">jQuery</a>
+<a href="http://rubyer.me/blog/tag/linux-2" class="tag-link-41" title="11 个话题" style="font-size: 16.155339805825pt;">Linux</a>
+<a href="http://rubyer.me/blog/tag/mongodb" class="tag-link-21" title="3 个话题" style="font-size: 9.631067961165pt;">MongoDB</a>
+<a href="http://rubyer.me/blog/tag/nginx" class="tag-link-47" title="2 个话题" style="font-size: 8pt;">Nginx</a>
+<a href="http://rubyer.me/blog/tag/nokogiri" class="tag-link-45" title="3 个话题" style="font-size: 9.631067961165pt;">nokogiri</a>
+<a href="http://rubyer.me/blog/tag/nosql" class="tag-link-20" title="4 个话题" style="font-size: 10.990291262136pt;">nosql</a>
+<a href="http://rubyer.me/blog/tag/putty" class="tag-link-74" title="3 个话题" style="font-size: 9.631067961165pt;">putty</a>
+<a href="http://rubyer.me/blog/tag/rails-label" class="tag-link-35" title="31 个话题" style="font-size: 22pt;">Rails</a>
+<a href="http://rubyer.me/blog/tag/rails-3-1" class="tag-link-88" title="5 个话题" style="font-size: 12.077669902913pt;">rails 3.1</a>
+<a href="http://rubyer.me/blog/tag/rails-routing%e8%b7%af%e7%94%b1" class="tag-link-61" title="2 个话题" style="font-size: 8pt;">Rails Routing路由</a>
+<a href="http://rubyer.me/blog/tag/railstips" class="tag-link-178" title="3 个话题" style="font-size: 9.631067961165pt;">railstips</a>
+<a href="http://rubyer.me/blog/tag/rails%e5%93%b2%e5%ad%a6" class="tag-link-33" title="2 个话题" style="font-size: 8pt;">Rails哲学</a>
+<a href="http://rubyer.me/blog/tag/rails%e6%8a%80%e5%b7%a7" class="tag-link-40" title="9 个话题" style="font-size: 15.067961165049pt;">Rails技巧</a>
+<a href="http://rubyer.me/blog/tag/rails-trick" class="tag-link-31" title="7 个话题" style="font-size: 13.708737864078pt;">Rails插件</a>
+<a href="http://rubyer.me/blog/tag/rails%e6%96%b0%e9%97%bb" class="tag-link-42" title="3 个话题" style="font-size: 9.631067961165pt;">Rails新闻</a>
+<a href="http://rubyer.me/blog/tag/rails%e9%94%99%e8%af%af" class="tag-link-28" title="7 个话题" style="font-size: 13.708737864078pt;">Rails错误</a>
+<a href="http://rubyer.me/blog/tag/redhat" class="tag-link-78" title="2 个话题" style="font-size: 8pt;">redhat</a>
+<a href="http://rubyer.me/blog/tag/rspec" class="tag-link-137" title="4 个话题" style="font-size: 10.990291262136pt;">RSpec</a>
+<a href="http://rubyer.me/blog/tag/ruby-label" class="tag-link-34" title="22 个话题" style="font-size: 19.961165048544pt;">Ruby</a>
+<a href="http://rubyer.me/blog/tag/rubygems" class="tag-link-165" title="6 个话题" style="font-size: 13.029126213592pt;">Rubygems</a>
+<a href="http://rubyer.me/blog/tag/rubymine" class="tag-link-57" title="3 个话题" style="font-size: 9.631067961165pt;">Rubymine</a>
+<a href="http://rubyer.me/blog/tag/rvm" class="tag-link-77" title="4 个话题" style="font-size: 10.990291262136pt;">rvm</a>
+<a href="http://rubyer.me/blog/tag/sinatra" class="tag-link-167" title="3 个话题" style="font-size: 9.631067961165pt;">Sinatra</a>
+<a href="http://rubyer.me/blog/tag/sqlite3" class="tag-link-80" title="2 个话题" style="font-size: 8pt;">sqlite3</a>
+<a href="http://rubyer.me/blog/tag/ubuntu" class="tag-link-65" title="4 个话题" style="font-size: 10.990291262136pt;">ubuntu</a>
+<a href="http://rubyer.me/blog/tag/view" class="tag-link-71" title="2 个话题" style="font-size: 8pt;">view</a>
+<a href="http://rubyer.me/blog/tag/vim" class="tag-link-76" title="3 个话题" style="font-size: 9.631067961165pt;">vim</a>
+<a href="http://rubyer.me/blog/tag/%e5%88%86%e9%a1%b5" class="tag-link-17" title="2 个话题" style="font-size: 8pt;">分页</a>
+<a href="http://rubyer.me/blog/tag/%e5%bc%95%e7%94%a8" class="tag-link-69" title="2 个话题" style="font-size: 8pt;">引用</a>
+<a href="http://rubyer.me/blog/tag/%e6%9d%be%e6%9c%ac%e8%a1%8c%e5%bc%98%e7%9a%84%e7%a8%8b%e5%ba%8f%e4%b8%96%e7%95%8c" class="tag-link-133" title="4 个话题" style="font-size: 10.990291262136pt;">松本行弘的程序世界</a>
+<a href="http://rubyer.me/blog/tag/%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86" class="tag-link-67" title="3 个话题" style="font-size: 9.631067961165pt;">版本管理</a>
+<a href="http://rubyer.me/blog/tag/%e7%8e%a9" class="tag-link-39" title="2 个话题" style="font-size: 8pt;">玩</a>
+<a href="http://rubyer.me/blog/tag/%e7%bf%bb%e8%af%91" class="tag-link-14" title="8 个话题" style="font-size: 14.388349514563pt;">翻译</a>
+<a href="http://rubyer.me/blog/tag/%e8%bf%90%e7%ae%97%e7%ac%a6" class="tag-link-66" title="2 个话题" style="font-size: 8pt;">运算符</a>
+</div>
+</div>
+<div class="widget widget_recent_comments">
+<h3>近期评论</h3>
+<ul id="recentcomments">
+<li class="recentcomments">老宋 发表在《<a href="http://rubyer.me/blog/823/comment-page-1#comment-1008">Rails Cookies与Session操作汇总</a>》</li>
+<li class="recentcomments">老宋 发表在《<a href="http://rubyer.me/about/comment-page-1#comment-1007">关于老宋</a>》</li>
+<li class="recentcomments">boswell 发表在《<a href="http://rubyer.me/blog/823/comment-page-1#comment-1002">Rails Cookies与Session操作汇总</a>》</li>
+<li class="recentcomments">boswell 发表在《<a href="http://rubyer.me/about/comment-page-1#comment-1001">关于老宋</a>》</li>
+<li class="recentcomments">
+<a href="http://chenagw.wordpress.com/2012/03/17/ror-%e8%b6%85%e5%bf%ab%e9%80%9f%e6%95%99%e5%ad%b8%ef%bc%881%e5%88%86%e9%90%98%e4%b8%8a%e6%89%8bscaffold%e8%85%b3%e6%89%8b%e6%9e%b6%e5%bf%ab%e9%80%9f%e5%bb%ba%e7" rel="external nofollow" class="url">RoR 超快速教学（1分钟上手scaffold脚手架快速建立 CRUD 模板，下载时间不算） « Chen Log</a> 发表在《<a href="http://rubyer.me/blog/1509/comment-page-1#comment-996">Windows下安装Ruby on Rails最简单的方法</a>》</li>
+</ul>
+</div>
+<div class="widget widget_categories">
+<h3>文章分类</h3>		<ul>
+<li class="cat-item cat-item-12">
+<a href="http://rubyer.me/blog/category/linux-mac" title="查看 Linux/Mac 下的所有文章">Linux/Mac</a> (16)
+</li>
+	<li class="cat-item cat-item-6">
+<a href="http://rubyer.me/blog/category/rails" title="查看 Rails 下的所有文章">Rails</a> (57)
+</li>
+	<li class="cat-item cat-item-13">
+<a href="http://rubyer.me/blog/category/ruby-install" title="查看 ROR安装 下的所有文章">ROR安装</a> (16)
+</li>
+	<li class="cat-item cat-item-3">
+<a href="http://rubyer.me/blog/category/ruby" title="查看 Ruby 下的所有文章">Ruby</a> (46)
+</li>
+	<li class="cat-item cat-item-103">
+<a href="http://rubyer.me/blog/category/ruby-diary" title="查看 一日一技 下的所有文章">一日一技</a> (15)
+</li>
+	<li class="cat-item cat-item-1">
+<a href="http://rubyer.me/blog/category/no" title="查看 其它 下的所有文章">其它</a> (16)
+</li>
+		</ul>
+</div>
+<div class="widget widget_links">
+<h3>我的朋友</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://hisea.me/" title="远在多伦多的Ruby，Rails高手" target="_blank">Hisea</a></li>
+<li><a href="http://www.kennx.net/" title="KennX – 宝石之力">KennX – 宝石之力</a></li>
+<li><a href="http://miclle.com/" title="Miclle’s posts">Miclle's posts</a></li>
+<li><a href="http://rubyeye.net/" target="_blank">Ruby中文站</a></li>
+<li><a href="http://serholiu.com" title="SErHo的博客">SErHo's Blog</a></li>
+<li><a href="http://www.nanjingui.com" title="南京UI设计">南京UI设计</a></li>
+<li><a href="http://www.wuhao.me">吴昊个人博客</a></li>
+<li><a href="http://xiaoneit.com" title="一个北京百度的朋友" target="_blank">坚持就是胜利</a></li>
+<li><a href="http://www.506c.com/" target="_blank">够戏网</a></li>
+<li><a href="http://www.kdefan.com" target="_blank">天空之城</a></li>
+
+	</ul>
+</div>
+
+<!-- showcase 2 -->
+
+</div>
+<!-- sidebar END -->
+
+	<div class="fixed"></div>
+
+	<!-- footer START -->
+	<div id="footer">
+		<div id="about">
+			Powered by <a href="http://wordpress.org/">WordPress</a>			 | Theme by <a href="http://www.neoease.com/">NeoEase</a>			 | Owned by <a href="/about">老宋</a>		</div>
+		<ul id="admin">
+<li><a href="http://rubyer.me/wp-login.php?action=register">注册</a></li>			<li><a href="http://rubyer.me/wp-login.php">登录</a></li>
+			<li id="gotop"><a href="#" onclick="MGJS.goTop();return false;">置顶</a></li>
+		</ul>
+<div class="fixed"></div>
+	</div>
+	<!-- footer END -->
+
+</div>
+<!-- content END -->
+
+		</div>
+<!-- container -->
+	</div>
+<!-- wrap -->
+
+
+
+
+
+
+
+
+
