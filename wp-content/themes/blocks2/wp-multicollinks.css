@@ -1,0 +1,25 @@
+.ml_col {
+	float:left;
+	position:relative;
+}
+.ml_col_2 {
+	width:50%;
+	position:relative;
+}
+.ml_col_3 {
+	width:33%;
+	position:relative;
+}
+.ml_col_4 {
+	width:25%;
+	position:relative;
+}
+.ml_fixed {
+	clear:both;
+}
+.ml_showall {
+	float:right;
+}
+.ml_item {
+	position:relative;
+}

@@ -1,0 +1,74 @@
+    VERSION DATE       TYPE   CHANGES
+    2.0     2009/08/05 NEW    Compatible with IE8.
+                       NEW    Compatible with WordPress 2.8.
+                       NEW    Thread(nested) comments is now supported.
+                       NEW    Multi level menu is now supported.
+                       NEW    Added style for calendar widget.
+                       NEW    'Mail To Commenter' plugin is now supported. (via '@+user+blank')
+                       NEW    'Quick Comments' plugin is now supported.
+                       NEW    'WP-PostViews' plugin is now supported.
+                       NEW    Added 'Add link' and 'Edit links' buttons in link template.
+                       NEW    Added the link of author on the posts.
+                       NEW    Added 'Submit comments with Ctrl+Enter' option.
+                       NEW    Added 'web analytics' options.
+                       NEW    Added 'twitter' options.
+                       NEW    Added Lithuania language support. (Thanks Mantas Malcius)
+                       NEW    Added Japanese language support. (Thanks 樹乃)
+                       MODIFY Changed page width to 960px and redesign the 3col layout.
+                       MODIFY Changed the link of CSS validator.
+                       MODIFY Changed all the '<?' to '<?php'.
+                       MODIFY Changed the layout of widgets.
+                       MODIFY Changed table style.
+                       MODIFY Optimize SQL to select the copyright years.
+                       MODIFY Chenged the layout of post info.
+                       MODIFY Improved style for image captions.
+                       MODIFY Changed the tip of Author archive page.
+                       MODIFY Split links by category in links page (links.php).
+                       MODIFY Changed style of box and boxcaption.
+                       MODIFY Changed the background color of green sections.
+                       MODIFY Changed layout of archive page and added excerpts to the archive items.
+                       MODIFY Update Simplified Chinese translation.
+                       FIX    Someone got 'this.menu is undefined' error message and the feed combobox could not show up, the problem got fixed.
+                       FIX    Fixed 'sidebar being pushed down in IE6'.
+                       FIX    Fixed 'New post' button.
+                       REMOVE Removed DBX effect.
+                       REMOVE Removed 'dummy comment' options.
+                       REMOVE Removed 'description' and 'keywords' options, because there is conflict between this feature and some SEO plugins.
+                       REMOVE Removed JS and CSS about image switcher.
+                       REMOVE Removed 'WP-PostRatings' plugin supported.
+    1.2.5   2009/01/21 NEW    'WP-EasyArchives' plugin is now supported.
+                       NEW    Added Italian language support. (Thanks PALLI Matteo)
+                       NEW    Added Romanian language support. (Thanks Ryan)
+                       MODIFY Optimize SQL to select the copyright years. (Thanks kouz)
+                       MODIFY Changed '<?' to '<?php'. (Thanks Florent DURGET)
+                       FIX    Fixed 'some unapproved spam comments were being taking into consideration'. (Thanks Marcelo Silveira)
+    1.2.4   2009/01/05 FIX    Added 'rel="external nofollow"' tag to the comment links.
+    1.2.3   2009/01/02 NEW    Added Turkish language support. (Thanks TEAkolik)
+    1.2.2   2008/12/29 MODIFY Combine 'search.php' with 'archive.php'.
+                       MODIFY Moved all the .mo files to 'languages' directory.
+                       MODIFY Using conditional comments as CSS hack for IE6.
+                       FIX    Apply translations to 'Current Theme Options'.
+                       FIX    Fixed REPLY and QUERY events in Opera Browsers.
+                       FIX    Fixed a weird problem when people updated to WordPress 2.7.
+                       FIX    Submenu are disabled when remove feeds from header, this bug now fixed.
+                       REMOVE Removed supported for 'SRG Clean Archives' plugin.
+                       REMOVE Removed posted dates in 'Recent Posts' widget.
+    1.2.1   2008/12/01 Fixed  Fixed trackbacks in WordPress 2.7.
+    1.2     2008/11/27 NEW    Added 2-level menu and feed reader list.
+                       NEW    Added style for image captions.
+                       NEW    Added 'Show categories as menu' option.
+                       NEW    Added meta options, include description and keywords.
+                       NEW    New 404 error page.
+                       NEW    Comment pages ready.
+                       MODIFY Update the JavaScript and using namespace.
+                       FIXED  Fixed login/logout links on comment page, again.
+                       FIXED  Fixed the mothod to get copyright term.
+                       FIXED  Fixed <pre> style for IE6.
+    1.1.3   2008/10/27 NEW    Added Brazilian Portuguese language support. (Thanks Guilherme Sautner)
+    1.1.2   2008/10/15 FIXED  Fixed a display bug of WP-RecentComments and WP-MulticolLinks in IE6.
+    1.1.1   2008/10/11 FIXED  Fixed a display bug of subcategory.
+    1.1     2008/10/08 MODIFY Widen the main text box.
+                       MODIFY Adding 'HTTP://' to the feed URL.
+                       FIXED  Fixed a display bug of archive widget.
+                       NEW    Added Sidebar docking boxes (DBX) to get the dropdown effect to work.
+                       NEW    Created this CHANGLOG file.

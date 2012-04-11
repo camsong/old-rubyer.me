@@ -1,0 +1,30 @@
+small,
+.small,
+.more-link,
+.errorbox,
+.messagebox,
+#tagline,
+.searchbox .button,
+#menubar,
+#subscribe ul li a,
+.post .meta .info,
+.post .meta .comments,
+.authorinfo .count,
+.authorinfo .date,
+#respond,
+#submit,
+#footer,
+.widget h3,
+#pagenavi,
+#postnavi,
+#commentnavi,
+.post .tags {
+	font-size:12px;
+}
+#menubar .menus li a, #admin li a {
+	padding:5px 10px !important;
+	padding:6px 10px;
+}
+*+html #menubar .menus li a, *+html #admin li a {
+	padding:6px 10px !important;
+}

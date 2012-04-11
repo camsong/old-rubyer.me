@@ -1,0 +1,3 @@
+mysqldump: Got error: 1146: Table 'rubyer.r_automatiseolinks' doesn't exist when using LOCK TABLES
+/home/sse/rubyer/wp-content/plugins/wordpress-ez-backup/functions/functions.sh: line 111: uuencode: command not found
+mail: symbol lookup error: mail: undefined symbol: mu_cfg_create_node_list

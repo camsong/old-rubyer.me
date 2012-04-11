@@ -1,0 +1,17 @@
+.post-ratings {
+	float:right;
+	font-size:10px;
+}
+.post-ratings-loading {
+	display:none;
+	float:right;
+	font-size:10px;
+}
+.post-ratings-image {
+	border:none;
+}
+.post-ratings img, .post-ratings-loading img, .post-ratings-image img {
+	border:none;
+	padding:0;
+	margin:0;
+}
