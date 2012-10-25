@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Advanced Rails debug - Ruby 迷</title>
+  <meta name="author" content="Cam Song">
+
+  
+  <meta name="description" content="这是我在Ruby Tuesday上分享的记录，介绍几种调试Rails程序的方法 1. ruby-debug, ruby-debug19 没人维护，bug多。Ruby 1.9.3后不推荐使用 2. debugger ruby 1.9.3后的选择，功能强大，缺点是没有语法高亮。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rubyer.me/blog/2012/09/18/advanced-rails-debug/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Ruby 迷" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ruby 迷</a></h1>
+  
+    <h2>关注Ruby, Rails开发技术博客</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:rubyer.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Advanced Rails Debug</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T18:32:00+08:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>这是我在<a href="http://ruby-china.org/topics/5582">Ruby Tuesday</a>上分享的记录，介绍几种调试Rails程序的方法</p>
+
+<h3>1. ruby-debug, ruby-debug19</h3>
+
+<p>没人维护，bug多。Ruby 1.9.3后不推荐使用</p>
+
+<h3>2. debugger</h3>
+
+<p>ruby 1.9.3后的选择，功能强大，缺点是没有语法高亮。</p>
+
+<h4>项目中引用debugger方法</h4>
+
+<p>修改Gemfile</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;debugger&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在需要设置断点的地方：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;debugger&#39;</span><span class="p">;</span> <span class="n">debugger</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>查看源文件方法</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">list</span>       <span class="c1">#往后翻看代码</span>
+</span><span class='line'><span class="n">list</span><span class="o">-</span> <span class="o">[</span><span class="n">n</span><span class="o">]</span>  <span class="c1">#往前翻看代码</span>
+</span><span class='line'><span class="n">list</span><span class="o">=</span>      <span class="c1">#查看当前运行处代码</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>list可以缩写为l</p>
+
+<h4>查看方法栈（stack frames）</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">backtrace</span><span class="o">/</span><span class="n">where</span>               <span class="c1"># 查看</span>
+</span><span class='line'><span class="n">frame</span> <span class="o">[</span><span class="n">n</span><span class="o">]</span>                     <span class="c1"># 跳到指定stack frames</span>
+</span><span class='line'><span class="n">up</span> <span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="p">(</span><span class="err">缩写</span><span class="n">u</span><span class="p">)</span> <span class="err">和</span> <span class="n">down</span> <span class="o">[</span><span class="n">n</span><span class="o">]</span>     <span class="c1"># 在stack frames层里来回切换</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>执行控制</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">next</span>           <span class="c1"># 执行下一行，遇到方法调用不进入。</span>
+</span><span class='line'><span class="n">step</span>           <span class="c1"># 执行一步，遇到方法调用进入。</span>
+</span><span class='line'><span class="n">continue</span><span class="o">/</span><span class="n">c</span>     <span class="c1"># 执行到下一个断点。</span>
+</span><span class='line'><span class="n">finish</span> <span class="o">[</span><span class="n">n</span><span class="o">]</span>     <span class="c1"># 执行到指定的frame才返回。注意编号是从下往上数。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>其它常用命令</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">help</span>
+</span><span class='line'><span class="n">info</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. pry</h3>
+
+<p>替代irb，我最喜欢的是语法高亮。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">help</span>
+</span><span class='line'><span class="n">cd</span> <span class="o">.</span><span class="n">.</span>
+</span><span class='line'><span class="n">whereami</span>
+</span><span class='line'><span class="nb">self</span>
+</span><span class='line'><span class="n">ls</span>
+</span><span class='line'><span class="n">show</span><span class="o">-</span><span class="n">doc</span>
+</span><span class='line'><span class="n">show</span><span class="o">-</span><span class="nb">method</span>
+</span><span class='line'><span class="n">edit</span><span class="o">-</span><span class="nb">method</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>pry-nav</h4>
+
+<p>pry只是替代erb，并不能调试rails，加上rails后即可pry-nav。
+增加3种基本调试指令。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">step</span>
+</span><span class='line'><span class="k">next</span>
+</span><span class='line'><span class="n">continue</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>pry-stack_explorer</h4>
+
+<p>Pry的插件，用于查看方法栈</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="n">pry</span><span class="p">)</span> <span class="n">main</span><span class="p">:</span> <span class="mi">0</span><span class="o">&gt;</span> <span class="n">show</span><span class="o">-</span><span class="n">stack</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Showing</span> <span class="n">all</span> <span class="n">accessible</span> <span class="n">frames</span> <span class="k">in</span> <span class="n">stack</span> <span class="p">(</span><span class="mi">5</span> <span class="k">in</span> <span class="n">total</span><span class="p">):</span>
+</span><span class='line'><span class="o">--</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#0 [method] gamma</span>
+</span><span class='line'>   <span class="c1">#1 [method] beta</span>
+</span><span class='line'>   <span class="c1">#2 [method] alpha</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>使用pry调试rails项目</h4>
+
+<p>修改Gemfile</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pry&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pry-nav&#39;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s1">&#39;pry-stack_explorer&#39;</span> <span class="c1"># 如果不查看方法栈，可以省略</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在需要设置断点的地方：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">binding</span><span class="o">.</span><span class="n">pry</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4. 参考</h3>
+
+<p><a href="https://github.com/cldwalker/debugger">https://github.com/cldwalker/debugger</a></p>
+
+<p><a href="https://github.com/pry/pry">https://github.com/pry/pry</a></p>
+
+<p><a href="https://github.com/pry/pry-stack_explorer">https://github.com/pry/pry-stack_explorer</a></p>
+
+<p><a href="http://guides.rubyonrails.org/debugging_rails_applications.html">http://guides.rubyonrails.org/debugging_rails_applications.html</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Cam Song</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T18:32:00+08:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rubyer.me/blog/2012/09/18/advanced-rails-debug/" data-via="cam_song" data-counturl="http://rubyer.me/blog/2012/09/18/advanced-rails-debug/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/09/04/speed-up-with-rails-cache/" title="Previous Post: Speed up with Rails cache">&laquo; Speed up with Rails cache</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/18/advanced-rails-debug/">Advanced Rails debug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/04/speed-up-with-rails-cache/">Speed up with Rails cache</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("cam_song", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/cam_song" class="twitter-follow-button" data-show-count="false">Follow @cam_song</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Cam Song -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
