@@ -1,0 +1,36 @@
+
+ WordPress EZ Backup Script
+ Written by SangrelX
+
+ Step 1 Does Selected Backup Directory Exist
+  .. Selected Directory Exists .. Continuing
+   .. Selected Backup Directory Location .. /home/sse/rubyer/
+
+
+ Step 2 Create Backup Directory & DB Directory
+  .. Backup Directory Already Exists .. Skipping This Step
+   .. Backup Directory Location .. /home/sse/rubyer_backup
+
+ Step 3 Connect & Archive Database
+  .. Archiving Databases Now
+   .. DataBase User: root; Database: rubyer; Host: localhost
+    .. Database Dumped Successfully
+
+ Step 4 Archive Main Files in /home/sse/rubyer/
+  .. Archiving website files in /home/sse/rubyer/
+   .. Archive Status - DONE
+
+ Step 5 Cleaning up Remaining Files 
+  .. Cleanup is Complete
+
+ Step 6 Dispatching E-mail & Attachments
+   ..E-Mail Alert & Archive Attachment Dispatched to songshaoyin@qq.com
+
+ Step 7 Verify Backup
+    ..Backup Successfully Created
+     .. Full Site Backup - RubyerMeBackup2012-01-05.tgz is Complete
+
+ You may continue using your site now.
+ Reminder - your Backup Archive is located in /home/sse/rubyer_backup
+
+ Thank you for using WordPress EZ Backup

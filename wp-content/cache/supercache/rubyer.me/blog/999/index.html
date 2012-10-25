@@ -1,0 +1,814 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<title>创建基于Rails 3的纯净Ajax CRUD程序 | Ruby迷</title>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="http://rubyer.me/feed" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="http://rubyer.me/comments/feed" />
+	<link rel="pingback" href="http://rubyer.me/xmlrpc.php" />
+
+	<!-- style START -->
+	<style type="text/css" media="screen">@import url( http://rubyer.me/wp-content/themes/blocks2/style.css );</style>
+			<link rel="stylesheet" href="http://rubyer.me/wp-content/themes/blocks2/chinese.css" type="text/css" media="screen" />
+		<!--[if IE]>
+		<link rel="stylesheet" href="http://rubyer.me/wp-content/themes/blocks2/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	<!-- style END -->
+
+	<!-- script START -->
+	<script type="text/javascript" src="http://rubyer.me/wp-content/themes/blocks2/js/base.js"></script>
+	<script type="text/javascript" src="http://rubyer.me/wp-content/themes/blocks2/js/menu.js"></script>
+	<!-- script END -->
+
+		<link rel="alternate" type="application/rss+xml" title="Ruby迷 &raquo; 创建基于Rails 3的纯净Ajax CRUD程序 评论 Feed" href="http://rubyer.me/blog/999/feed" />
+<link rel='stylesheet' id='wp-pagenavi-css'  href='http://rubyer.me/wp-content/themes/blocks2/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<script type='text/javascript' src='http://rubyer.me/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rubyer.me/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://rubyer.me/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='1、我为什么开发Ruby《松本行弘的程序世界》' href='http://rubyer.me/blog/988' />
+<link rel='next' title='博客遭人敲诈？' href='http://rubyer.me/blog/1028' />
+<meta name="generator" content="WordPress 3.3.1" />
+<link rel='shortlink' href='http://rubyer.me/?p=999' />
+
+<!-- All in One SEO Pack 1.6.14.1 by Michael Torbert of Semper Fi Web Design[326,392] -->
+<meta name="description" content="Rails 3利用scaffold可以很容易地创建CRUD程序，但那是多页面的，现在很多场景需要使用Ajax在一个页面上实现CRUD。这对Rails" />
+<meta name="keywords" content="ajax,jquery,rails,ror,翻译" />
+<link rel="canonical" href="http://rubyer.me/blog/999" />
+<!-- /all in one seo pack -->
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
+<!-- Wordpress Popular Posts v2.2.1 -->
+<link rel="stylesheet" href="http://rubyer.me/wp-content/plugins/wordpress-popular-posts/style/wpp.css" type="text/css" media="screen" />
+<!-- End Wordpress Popular Posts v2.2.1 -->
+<script type='text/javascript' src='http://rubyer.me/wp-includes/js/jquery/jquery.js?ver=1.7.1'></script>
+<!-- Wordpress Popular Posts v2.2.1 -->
+<script type="text/javascript" charset="utf-8">
+    /* <![CDATA[ */				
+	jQuery.post('http://rubyer.me/wp-admin/admin-ajax.php', {action: 'wpp_update', token: '8e0b5b5bad', id: 999});
+    /* ]]> */
+</script>
+<!-- End Wordpress Popular Posts v2.2.1 -->
+            <meta id="syntaxhighlighteranchor" name="syntaxhighlighter-version" content="3.1.3" />
+</head>
+
+
+<body>
+	<div id="wrap">
+		<div id="container">
+
+<!-- header START -->
+<div id="header">
+	<div id="title">
+		<h1><a href="http://rubyer.me/">Ruby迷</a></h1>
+		<div id="tagline">spend less, do more</div>
+	</div>
+
+	<!-- WordPress searchbox -->
+	<div class="searchbox">
+		<form action="http://rubyer.me/" method="get">
+			<div class="content">
+				<input type="text" class="textfield" name="s" size="24" value="" />
+				<input type="submit" class="button" value="搜索" />
+			</div>
+		</form>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- menubar START -->
+	<div id="navigation">
+		<ul id="menubar">
+			<li class="page_item"><a title="首页" href="http://rubyer.me/">首页</a></li>
+				<li class="cat-item cat-item-6"><a href="http://rubyer.me/blog/category/rails" title="查看 Rails 下的所有文章">Rails</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://rubyer.me/blog/category/ruby" title="查看 Ruby 下的所有文章">Ruby</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://rubyer.me/blog/category/linux-mac" title="查看 Linux/Mac 下的所有文章">Linux/Mac</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://rubyer.me/blog/category/no" title="查看 其它 下的所有文章">其它</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://rubyer.me/blog/category/ruby-install" title="查看 ROR安装 下的所有文章">ROR安装</a>
+</li>
+	<li class="cat-item cat-item-103"><a href="http://rubyer.me/blog/category/ruby-diary" title="查看 一日一技 下的所有文章">一日一技</a>
+</li>
+                        <li><a href="/about">关于我</a></li>
+		</ul>
+		<div id="subscribe" class="feed">
+			<a title="订阅这个博客的文章" class="feedlink" href="http://rubyer.me/feed"><abbr title="Really Simple Syndication">RSS</abbr> 订阅</a>
+							<ul>
+					<li><a rel="external nofollow" title="订阅到鲜果"	href="http://www.xianguo.com/subscribe.php?url=http://rubyer.me/feed">					鲜果	</a></li>
+					<li><a rel="external nofollow" title="订阅到抓虾"	href="http://www.zhuaxia.com/add_channel.php?url=http://rubyer.me/feed">					抓虾	</a></li>
+					<li><a rel="external nofollow" title="订阅到有道"		href="http://reader.yodao.com/#url=http://rubyer.me/feed">								有道	</a></li>
+					<li><a rel="external nofollow" title="订阅到 Google"		href="http://fusion.google.com/add?feedurl=http://rubyer.me/feed">						 Google	</a></li>
+					<li><a rel="external nofollow" title="订阅到 netvibes"	href="http://www.netvibes.com/subscribe.php?url=http://rubyer.me/feed">					 netvibes	</a></li>
+					<li><a rel="external nofollow" title="订阅到 newsgator"	href="http://www.newsgator.com/ngs/subscriber/subfext.aspx?url=http://rubyer.me/feed">	 newsgator</a></li>
+					<li><a rel="external nofollow" title="订阅到 Bloglines"	href="http://www.bloglines.com/sub/http://rubyer.me/feed">								 Bloglines</a></li>
+					<li><a rel="external nofollow" title="订阅到哪吒"		href="http://inezha.com/add?url=http://rubyer.me/feed">									哪吒	</a></li>
+				</ul>
+					</div>
+				
+		<span id="copyright">
+			&copy; 2011-2012 Ruby迷		</span>
+		<div class="fixed"></div>
+	</div>
+	<!-- menubar END -->
+
+	<!-- main START -->
+	<div id="main">
+
+<div class="post" id="post-999">
+	<h2 class="title">创建基于Rails 3的纯净Ajax CRUD程序</h2>
+	<div class="meta">
+		<div class="info">
+			十一 11th, 2011								</div>
+		<div class="comments">
+			<a href="#respond">发表评论</a>
+						 | <a href="http://rubyer.me/blog/999/trackback" rel="trackback">Trackback</a>
+								</div>
+		<div class="fixed"></div>
+	</div>
+
+	<div class="content">
+		<p>Rails 3利用scaffold可以很容易地创建CRUD程序，但那是多页面的，现在很多场景需要使用Ajax在一个页面上实现CRUD。这对Rails 来说也是很简单的，下面就来创建一个符合Rails风格的Ajax CRUD程序。整个过程大概15分钟，建议先把整个代码照应敲一遍，然后再慢慢理解。</p>
+<h3>目标：</h3>
+<p>只有1个页面，CRUD全部基于Ajax在一个页面完成。使用无入侵式的Javascript风格。</p>
+<h3>平台：</h3>
+<p>适用于Rails 3.*，使用jQuery+sqlite。<br />
+Rails 3.1开始默认自带jQuery，如果是Rails 3.0.*需要手动添加jQuery。<br />
+如果想用Prototype要把那些js做相应修改。</p>
+<p>Let&#8217;s GO：<br />
+<span id="more-999"></span></p>
+<h3>1、创建项目</h3>
+<pre class="brush: ruby; title: ; notranslate" title="">
+rails new AjaxCRUD
+# 创建scaffold
+rails g scaffold Entry name:string address:text phone:string email:string
+# 建立数据库和表
+rake db:create
+rake db:migrate
+</pre>
+<h3>2、修改controller</h3>
+<p>因为创建的是基于Ajax的CRUD，所以controller返回的数据要支持‘.js’格式，可以把默认的json格式删掉，其实除了index会返回网页，其它都是返回js，所以index外的html格式返回也可以删除。</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+respond_to do |format|
+format.html
+format.js
+end
+</pre>
+<p>基于个思想，修改后的controller如下：</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+class EntriesController &lt; ApplicationController
+  def index
+    @entries = Entry.all
+    @entry = Entry.new
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
+  end
+
+  def show
+    @entry = Entry.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js
+    end
+  end
+
+  def new
+    @entry = Entry.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.js
+    end
+  end
+
+  def edit
+    @entry = Entry.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def create
+    @entry = Entry.new(params[:entry])
+
+    respond_to do |format|
+      if @entry.save
+        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.js
+      else
+        format.html { render action: &quot;new&quot; }
+        format.js { render action: &quot;new&quot; }
+      end
+    end
+  end
+
+  def update
+    @entry = Entry.find(params[:id])
+
+    respond_to do |format|
+      if @entry.update_attributes(params[:entry])
+        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        format.js
+      else
+        format.html { render action: &quot;edit&quot; }
+        format.js { render action: &quot;edit&quot; }
+      end
+    end
+  end
+
+  def destroy
+    @entry = Entry.find(params[:id])
+    @entry.destroy
+
+    respond_to do |format|
+      format.html { redirect_to entries_url }
+      format.js
+    end
+  end
+end
+</pre>
+<h3>3、修改Views</h3>
+<p>修改index页面(app/views/entries/index.html.erb)来显示Entry表单。</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+&lt;h1&gt;Listing entries&lt;/h1&gt;
+&lt;table id=&quot;entries&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Phone&lt;/th&gt;
+&lt;th&gt;Email&lt;/th&gt;
+&lt;th&gt;Address&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Entry form&lt;/h2&gt;
+&lt;div id=&quot;form&quot;&gt;&quot;form&quot; %&gt;&lt;/div&gt;
+</pre>
+<p>注意：为了后面用jQuery操作DOM，table设置id=”entries”。</p>
+<p>修改partial（app/views/entries/_form.html.erb）,注意在form_for中添加remote以发送异步请求。</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+&lt;%= form_for(@entry, :remote =&gt; true) do |f| %&gt;
+  &lt;% if @entry.errors.any? %&gt;
+    &lt;div id=&quot;error_explanation&quot;&gt;
+      &lt;h2&gt;&lt;%= pluralize(@entry.errors.count, &quot;error&quot;) %&gt; prohibited this entry from being saved:&lt;/h2&gt;
+
+      &lt;ul&gt;
+      &lt;% @entry.errors.full_messages.each do |msg| %&gt;
+        &lt;li&gt;&lt;%= msg %&gt;&lt;/li&gt;
+      &lt;% end %&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;% end %&gt;
+
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;%= f.label :name %&gt;&lt;br /&gt;
+    &lt;%= f.text_field :name %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;%= f.label :phone %&gt;&lt;br /&gt;
+    &lt;%= f.text_field :phone %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;%= f.label :email %&gt;&lt;br /&gt;
+    &lt;%= f.text_field :email %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;%= f.label :address %&gt;&lt;br /&gt;
+    &lt;%= f.text_area :address, :rows =&gt; 3 %&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;actions&quot;&gt;
+    &lt;%= f.submit %&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;
+</pre>
+<p>新建Entry partial(app/views/entries/_entry.html.erb)。<br />
+为了发送AJAX请求，edit，destroy都设置remote=true。<br />
+为了区分不同的entry，调用dom_id来根据entry生成不同的id</p>
+<pre class="brush: xml; title: ; notranslate" title="">
+&lt;tr id=&quot;&lt;%= dom_id entry %&gt;&quot;&gt;
+  &lt;td&gt;&lt;%= entry.name %&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;%= entry.phone %&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;%= entry.email %&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;%= simple_format entry.address %&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;%= link_to 'Show', entry %&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;%= link_to 'Edit', edit_entry_path(entry), :remote =&gt; true %&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete, :remote =&gt; true %&gt;&lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+<h3>4、添加js.erb来响应Ajax请求</h3>
+<p>下面是关键，首先先说下操作流程：浏览器发起Ajax请求(CRUD)&#8211;>controller收到请求，并调用model更新数据&#8211;>返回js代码&#8211;>浏览器收到js代码，使用jQuery来更新index页面中的DOM对象，包括列表和表单。</p>
+<p>新建 app/views/entries/create.js.erb 响应添加Entry的请求<br />
+1、在index页面的entry列表中添加刚才新增的entry对象。<br />
+2、清空index页面中添加entry表单中的数据。</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+$('&lt;%= escape_javascript(render(:partial =&gt; @entry)) %&gt;').appendTo('#entries').hide().fadeIn();
+$(&quot;#new_entry&quot;)[0].reset();
+</pre>
+<p>escape_javascript(render(:partial => @entry))可以缩写成：j render @entry。</p>
+<p>新建 app/views/entries/edit.js.erb 处理点击编辑时的请求<br />
+在index页面的新建entry的form中填充要编辑entry的数据。</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+$(&quot;#form &gt; form&quot;).replaceWith(&quot;&lt;%= j render &quot;form&quot; %&gt;&quot;);
+</pre>
+<p>新建 app/views/entries/update.js.erb 来更新列表中的Entry对象。新建Entry并清空form</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+$(&quot;#&lt;%= dom_id @entry %&gt;&quot;).replaceWith(&quot;&lt;%= j render @entry %&gt;&quot;);
+&lt;% @entry = Entry.new # reset for new form %&gt;
+$(&quot;.edit_entry&quot;).replaceWith(&quot;&lt;%= j render &quot;form&quot; %&gt;&quot;)
+$(&quot;.new_entry&quot;)[0].reset();
+</pre>
+<p>新建 app/views/entries/destroy.js.erb 来删除list中的Entry</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+$(&quot;#&lt;%= dom_id @entry %&gt;&quot;).remove();
+</pre>
+<h3>5、设置主页</h3>
+<p>设置entries页面为主页。修改 config/routes.rb</p>
+<pre class="brush: ruby; title: ; notranslate" title="">
+AjaxCRUD::Application.routes.draw do
+  resources :entries
+  root :to =&gt; &quot;entries#index&quot;
+end
+</pre>
+<p>删除静态首页文件。</p>
+<pre class="brush: bash; title: ; notranslate" title="">
+rm public/index.html
+</pre>
+<h3>6、启动程序</h3>
+<pre class="brush: bash; title: ; notranslate" title="">
+rails s
+</pre>
+<p>此时打开 http://127.0.0.1:3000<br />
+就可以使用了。</p>
+<blockquote><p>源代码托管在<br />
+<a href="https://github.com/camelsong/AjaxCRUD" title="Rails基于Ajax的CRUD源代码" target="_blank">https://github.com/camelsong/AjaxCRUD</a></p></blockquote>
+<p>英文原文地址：http://codefundas.blogspot.com/2010/12/create-ajax-based-curd-using-rails-3.html</p>
+		<div class="fixed"></div>
+					<div class="tags">标签: <a href="http://rubyer.me/blog/tag/ajax" rel="tag">ajax</a>, <a href="http://rubyer.me/blog/tag/jquery" rel="tag">jQuery</a>, <a href="http://rubyer.me/blog/tag/rails-label" rel="tag">Rails</a>, <a href="http://rubyer.me/blog/tag/ror" rel="tag">ror</a>, <a href="http://rubyer.me/blog/tag/%e7%bf%bb%e8%af%91" rel="tag">翻译</a></div>
+			</div>
+
+<div style="padding: 5px 10px 5px 15px;
+margin-bottom: 10px;background: #F6F9E7;color:green;">
+&gt;&gt;原创文章，欢迎转载。转载请注明：转载自<a href="http://rubyer.me/" title="Ruby迷" target="_blank">Ruby迷</a>，谢谢！<br/>
+&gt;&gt;原文链接地址：<a href="http://rubyer.me/blog/999" rel="bookmark" title="创建基于Rails 3的纯净Ajax CRUD程序" target="_blank">创建基于Rails 3的纯净Ajax CRUD程序</a><br/>
+</div>
+
+</div>
+
+
+<!-- related posts -->
+<div id="related_posts"><h2  class="related_post_title">猜你也喜欢</h2><ul class="related_post"><li><a href="http://rubyer.me/blog/589" title="Rails中添加RESTful风格的admin controllers和views">Rails中添加RESTful风格的admin controllers和views</a> (0)<br /><small>有没有给Rails程序开发过后台管理系统...</small></li><li><a href="http://rubyer.me/blog/247" title="Rails构成模块介绍">Rails构成模块介绍</a> (0)<br /><small>Rails有很多独立的模块组成，了解模块...</small></li><li><a href="http://rubyer.me/blog/231" title="创建第一个 Rails 程序(使用mysql)">创建第一个 Rails 程序(使用mysql)</a> (0)<br /><small>Rails 向来以Web快速开发闻名，究...</small></li><li><a href="http://rubyer.me/blog/220" title="Rails 术语">Rails 术语</a> (0)<br /><small>Active Recorder: 简称A...</small></li><li><a href="http://rubyer.me/blog/174" title="Rails里删除Protetype改用JQuery">Rails里删除Protetype改用JQuery</a> (1)<br /><small>由于历史原因，Rails一直默认使用Pr...</small></li></ul></div><div class="fixed"></div>
+<div id="postnavi">
+	<span class="alignleft floatleft"><a href="http://rubyer.me/blog/1028" rel="next">博客遭人敲诈？</a></span>
+	<span class="alignright floatright"><a href="http://rubyer.me/blog/988" rel="prev">1、我为什么开发Ruby《松本行弘的程序世界》</a></span>
+	<div class="fixed"></div>
+</div>
+
+<script type="text/javascript" src="http://rubyer.me/wp-content/themes/blocks2/js/comment.js"></script>
+
+
+
+	<ol class="commentlist">
+			<li id="comment-216" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt='' src='http://1.gravatar.com/avatar/d33afc1c30fa9d93a3a49ada7b480dd3?s=24&amp;d=identicon&amp;r=G' class='avatar avatar-24 photo' height='24' width='24' /></div>			<div class="author">
+									<span class="authorname" id="commentauthor-216">
+				
+				老式仓库
+									</span>
+								<div class="date">十二 14th, 201123:07</div>
+			</div>
+			<div class="count">
+															<a class='comment-reply-link' href='/blog/999?replytocom=216#respond' onclick='return addComment.moveForm("comment-216", "216", "respond", "999")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-216', 'comment-216', 'commentbody-216', 'comment');">引用</a> | 
+												<a href="#comment-216">#1</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-216">
+					<p>好像不是半角的问题。。。我稍微改了一下就好了。<br />
+不过这里评论贴代码格式不对。。。就不贴了。。。</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+	<li id="comment-193" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt='' src='http://1.gravatar.com/avatar/d33afc1c30fa9d93a3a49ada7b480dd3?s=24&amp;d=identicon&amp;r=G' class='avatar avatar-24 photo' height='24' width='24' /></div>			<div class="author">
+									<span class="authorname" id="commentauthor-193">
+				
+				老式仓库
+									</span>
+								<div class="date">十二 12th, 201100:16</div>
+			</div>
+			<div class="count">
+															<a class='comment-reply-link' href='/blog/999?replytocom=193#respond' onclick='return addComment.moveForm("comment-193", "193", "respond", "999")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-193', 'comment-193', 'commentbody-193', 'comment');">引用</a> | 
+												<a href="#comment-193">#2</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-193">
+					<p>这段也有问题：<br />
+ true %&gt;</p>
+<p> &#8216;Are you sure?&#8217;, :method =&gt; :delete, :remote =&gt; true %&gt;</p>
+<p>估计是粘贴的时候代码格式化错了。</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+	<li id="comment-192" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt='' src='http://1.gravatar.com/avatar/d33afc1c30fa9d93a3a49ada7b480dd3?s=24&amp;d=identicon&amp;r=G' class='avatar avatar-24 photo' height='24' width='24' /></div>			<div class="author">
+									<span class="authorname" id="commentauthor-192">
+				
+				老式仓库
+									</span>
+								<div class="date">十二 12th, 201100:12</div>
+			</div>
+			<div class="count">
+															<a class='comment-reply-link' href='/blog/999?replytocom=192#respond' onclick='return addComment.moveForm("comment-192", "192", "respond", "999")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-192', 'comment-192', 'commentbody-192', 'comment');">引用</a> | 
+												<a href="#comment-192">#3</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-192">
+					<p>博主，第3点中，修改Views的这段代码有问题吧？</p>
+<p>Entry form<br />
+16<br />
+“form” %&gt;</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class='children'>
+	<li id="comment-196" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt='' src='http://0.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653?s=24&amp;d=identicon&amp;r=G' class='avatar avatar-24 photo' height='24' width='24' /></div>			<div class="author">
+									<span class="authorname" id="commentauthor-196">
+				
+				老宋
+									</span>
+								<div class="date">十二 12th, 201119:39</div>
+			</div>
+			<div class="count">
+															<a class='comment-reply-link' href='/blog/999?replytocom=196#respond' onclick='return addComment.moveForm("comment-196", "196", "respond", "999")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-196', 'comment-196', 'commentbody-196', 'comment');">引用</a> | 
+												<a href="#comment-196">#4</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-196">
+					<p>你说的问题是标点符号的全半角问题，我在chrome中没有哦，你是不是复制时自动进行了转换</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class='children'>
+	<li id="comment-294" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt='' src='http://0.gravatar.com/avatar/4f873fd56f2bb58c0a13847a46b481f3?s=24&amp;d=identicon&amp;r=G' class='avatar avatar-24 photo' height='24' width='24' /></div>			<div class="author">
+									<span class="authorname" id="commentauthor-294">
+				
+				PikachuEXE
+									</span>
+								<div class="date">十二 29th, 201110:34</div>
+			</div>
+			<div class="count">
+															<a class='comment-reply-link' href='/blog/999?replytocom=294#respond' onclick='return addComment.moveForm("comment-294", "294", "respond", "999")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-294', 'comment-294', 'commentbody-294', 'comment');">引用</a> | 
+												<a href="#comment-294">#5</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-294">
+					<p>原文：http://codefundas.blogspot.com/2010/12/create-ajax-based-curd-using-rails-3.html<br />
+正確碼：</p>
+<p>   “form” %&gt;</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+<ul class='children'>
+	<li id="comment-295" class="comment regularcomment">
+
+		<div class="info regularinfo">
+			<div class="pic"><img alt='' src='http://0.gravatar.com/avatar/4f873fd56f2bb58c0a13847a46b481f3?s=24&amp;d=identicon&amp;r=G' class='avatar avatar-24 photo' height='24' width='24' /></div>			<div class="author">
+									<span class="authorname" id="commentauthor-295">
+				
+				PikachuEXE
+									</span>
+								<div class="date">十二 29th, 201110:35</div>
+			</div>
+			<div class="count">
+															<a class='comment-reply-link' href='/blog/999?replytocom=295#respond' onclick='return addComment.moveForm("comment-295", "295", "respond", "999")'>回复</a> | 										<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-295', 'comment-295', 'commentbody-295', 'comment');">引用</a> | 
+												<a href="#comment-295">#6</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-295">
+					<p>汗，還是貼不到，去原文處看吧</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	</ol>
+
+
+
+	<div id="respond">
+	<form id="commentform" action="http://rubyer.me/wp-comments-post.php" method="post">
+
+					<a rel="nofollow" id="cancel-comment-reply-link" href="/blog/999#respond" style="display:none;">Cancel reply</a>		
+		<!-- comment info -->
+					
+			<div id="author_info">
+				<div class="row">
+					<input type="text" name="author" id="author" class="textfield" value="" size="24" tabindex="1" />
+					<label for="author" class="small">昵称 (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="email" id="email" class="textfield" value="" size="24" tabindex="2" />
+					<label for="email" class="small">电子邮箱 (我们会为您保密) (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="url" id="url" class="textfield" value="" size="24" tabindex="3" />
+					<label for="url" class="small">网址</label>
+				</div>
+			</div>
+
+			
+		
+	<!-- comment input -->
+	<div class="row">
+		<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+	</div>
+
+	<!-- comment submit and rss -->
+	<div id="submitbox">
+		<a class="feed" href="feed:http://rubyer.me/comments/feed">订阅评论</a>
+		<input name="submit" type="submit" id="submit" class="button" tabindex="5" value="提交评论" />
+				<input type="hidden" name="comment_post_ID" value="999" />
+		<div class="fixed"></div>
+	</div>
+
+			<input type='hidden' name='comment_post_ID' value='999' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+	
+	
+	</form>
+	</div>
+
+			<script type="text/javascript">MGJS.loadCommentShortcut();</script>
+	
+
+	</div>
+	<!-- main END -->
+
+		
+<!-- sidebar START -->
+<div id="sidebar">
+
+	<!-- showcase -->
+	
+<!-- Wordpress Popular Posts Plugin v2.2.1 [W] [weekly] [regular] -->
+<div class="widget popular-posts">
+<h3>最受欢迎</h3><ul>
+<li><a href="http://rubyer.me/blog/134" title="windows下安装DevKit"><span class="wpp-post-title">windows下安装DevKit</span></a> </li>
+<li><a href="http://rubyer.me/blog/1509" title="Windows下安装Ruby on Rails最简单的方法"><span class="wpp-post-title">Windows下安装Ruby on Rails最简单的方法</span></a> </li>
+<li><a href="http://rubyer.me/blog/84" title="ROR开发IDE比较：Aptana Studio、RubyMine、NetBeans"><span class="wpp-post-title">ROR开发IDE比较：Aptana Studio、RubyMine、NetBeans</span></a> </li>
+<li><a href="http://rubyer.me/blog/757" title="常用原型图设计工具Balsamiq Mockups、Axure RP、Pencil对比"><span class="wpp-post-title">常用原型图设计工具Balsamiq Mockups、Axure RP、Pencil对比</span></a> </li>
+<li><a href="http://rubyer.me/blog/1558" title="RubyMine 4正式版发布，知名的Ruby IDE"><span class="wpp-post-title">RubyMine 4正式版发布，知名的Ruby IDE</span></a> </li>
+<li><a href="http://rubyer.me/blog/999" title="创建基于Rails 3的纯净Ajax CRUD程序"><span class="wpp-post-title">创建基于Rails 3的纯净Ajax CRUD程序</span></a> </li>
+<li><a href="http://rubyer.me/blog/638" title="Ubuntu Linux下安装 Redis 并配置开机启动"><span class="wpp-post-title">Ubuntu Linux下安装 Redis 并配置开机启动</span></a> </li>
+<li><a href="http://rubyer.me/about" title="关于老宋"><span class="wpp-post-title">关于老宋</span></a> </li>
+<li><a href="http://rubyer.me/blog/941" title="提高rails new时bundle install运行速度"><span class="wpp-post-title">提高rails new时bundle install运行速度</span></a> </li>
+<li><a href="http://rubyer.me/blog/138" title="gem install mysql2 错误解决"><span class="wpp-post-title">gem install mysql2 错误解决</span></a> </li>
+
+</ul>
+</div>
+<!-- End Wordpress Popular Posts Plugin v2.2.1 -->
+		<div class="widget widget_recent_entries">		<h3>最新文章</h3>		<ul>
+				<li><a href="http://rubyer.me/blog/1693" title="Mac OS X中隐藏Spotlight 图标">Mac OS X中隐藏Spotlight 图标</a></li>
+				<li><a href="http://rubyer.me/blog/1682" title="Linux下的NFS配置">Linux下的NFS配置</a></li>
+				<li><a href="http://rubyer.me/blog/1661" title="Rails 开发环境日志过大时自动清理">Rails 开发环境日志过大时自动清理</a></li>
+				<li><a href="http://rubyer.me/blog/1641" title="reverse_merge为方法设置默认参数的技巧">reverse_merge为方法设置默认参数的技巧</a></li>
+				<li><a href="http://rubyer.me/blog/1669" title="让Ruby一个函数返回多个值">让Ruby一个函数返回多个值</a></li>
+				</ul>
+		</div><div class="widget widget_tag_cloud"><h3>标签</h3><div class="tagcloud"><a href='http://rubyer.me/blog/tag/active-record' class='tag-link-53' title='6 个话题' style='font-size: 13.029126213592pt;'>Active Record</a>
+<a href='http://rubyer.me/blog/tag/assets-pipeline' class='tag-link-63' title='2 个话题' style='font-size: 8pt;'>Assets Pipeline</a>
+<a href='http://rubyer.me/blog/tag/authentication' class='tag-link-87' title='2 个话题' style='font-size: 8pt;'>Authentication</a>
+<a href='http://rubyer.me/blog/tag/bundle' class='tag-link-55' title='3 个话题' style='font-size: 9.631067961165pt;'>bundle</a>
+<a href='http://rubyer.me/blog/tag/csdn' class='tag-link-163' title='3 个话题' style='font-size: 9.631067961165pt;'>CSDN</a>
+<a href='http://rubyer.me/blog/tag/debug' class='tag-link-106' title='3 个话题' style='font-size: 9.631067961165pt;'>debug</a>
+<a href='http://rubyer.me/blog/tag/gem' class='tag-link-82' title='3 个话题' style='font-size: 9.631067961165pt;'>gem</a>
+<a href='http://rubyer.me/blog/tag/git' class='tag-link-79' title='6 个话题' style='font-size: 13.029126213592pt;'>git</a>
+<a href='http://rubyer.me/blog/tag/has_secure_password' class='tag-link-89' title='2 个话题' style='font-size: 8pt;'>has_secure_password</a>
+<a href='http://rubyer.me/blog/tag/ide' class='tag-link-43' title='4 个话题' style='font-size: 10.990291262136pt;'>IDE</a>
+<a href='http://rubyer.me/blog/tag/javascript' class='tag-link-37' title='2 个话题' style='font-size: 8pt;'>javascript</a>
+<a href='http://rubyer.me/blog/tag/jquery' class='tag-link-50' title='5 个话题' style='font-size: 12.077669902913pt;'>jQuery</a>
+<a href='http://rubyer.me/blog/tag/linux-2' class='tag-link-41' title='11 个话题' style='font-size: 16.155339805825pt;'>Linux</a>
+<a href='http://rubyer.me/blog/tag/mongodb' class='tag-link-21' title='3 个话题' style='font-size: 9.631067961165pt;'>MongoDB</a>
+<a href='http://rubyer.me/blog/tag/nginx' class='tag-link-47' title='2 个话题' style='font-size: 8pt;'>Nginx</a>
+<a href='http://rubyer.me/blog/tag/nokogiri' class='tag-link-45' title='3 个话题' style='font-size: 9.631067961165pt;'>nokogiri</a>
+<a href='http://rubyer.me/blog/tag/nosql' class='tag-link-20' title='4 个话题' style='font-size: 10.990291262136pt;'>nosql</a>
+<a href='http://rubyer.me/blog/tag/putty' class='tag-link-74' title='3 个话题' style='font-size: 9.631067961165pt;'>putty</a>
+<a href='http://rubyer.me/blog/tag/rails-label' class='tag-link-35' title='31 个话题' style='font-size: 22pt;'>Rails</a>
+<a href='http://rubyer.me/blog/tag/rails-3-1' class='tag-link-88' title='5 个话题' style='font-size: 12.077669902913pt;'>rails 3.1</a>
+<a href='http://rubyer.me/blog/tag/rails-routing%e8%b7%af%e7%94%b1' class='tag-link-61' title='2 个话题' style='font-size: 8pt;'>Rails Routing路由</a>
+<a href='http://rubyer.me/blog/tag/railstips' class='tag-link-178' title='3 个话题' style='font-size: 9.631067961165pt;'>railstips</a>
+<a href='http://rubyer.me/blog/tag/rails%e5%93%b2%e5%ad%a6' class='tag-link-33' title='2 个话题' style='font-size: 8pt;'>Rails哲学</a>
+<a href='http://rubyer.me/blog/tag/rails%e6%8a%80%e5%b7%a7' class='tag-link-40' title='9 个话题' style='font-size: 15.067961165049pt;'>Rails技巧</a>
+<a href='http://rubyer.me/blog/tag/rails-trick' class='tag-link-31' title='7 个话题' style='font-size: 13.708737864078pt;'>Rails插件</a>
+<a href='http://rubyer.me/blog/tag/rails%e6%96%b0%e9%97%bb' class='tag-link-42' title='3 个话题' style='font-size: 9.631067961165pt;'>Rails新闻</a>
+<a href='http://rubyer.me/blog/tag/rails%e9%94%99%e8%af%af' class='tag-link-28' title='7 个话题' style='font-size: 13.708737864078pt;'>Rails错误</a>
+<a href='http://rubyer.me/blog/tag/redhat' class='tag-link-78' title='2 个话题' style='font-size: 8pt;'>redhat</a>
+<a href='http://rubyer.me/blog/tag/rspec' class='tag-link-137' title='4 个话题' style='font-size: 10.990291262136pt;'>RSpec</a>
+<a href='http://rubyer.me/blog/tag/ruby-label' class='tag-link-34' title='22 个话题' style='font-size: 19.961165048544pt;'>Ruby</a>
+<a href='http://rubyer.me/blog/tag/rubygems' class='tag-link-165' title='6 个话题' style='font-size: 13.029126213592pt;'>Rubygems</a>
+<a href='http://rubyer.me/blog/tag/rubymine' class='tag-link-57' title='3 个话题' style='font-size: 9.631067961165pt;'>Rubymine</a>
+<a href='http://rubyer.me/blog/tag/rvm' class='tag-link-77' title='4 个话题' style='font-size: 10.990291262136pt;'>rvm</a>
+<a href='http://rubyer.me/blog/tag/sinatra' class='tag-link-167' title='3 个话题' style='font-size: 9.631067961165pt;'>Sinatra</a>
+<a href='http://rubyer.me/blog/tag/sqlite3' class='tag-link-80' title='2 个话题' style='font-size: 8pt;'>sqlite3</a>
+<a href='http://rubyer.me/blog/tag/ubuntu' class='tag-link-65' title='4 个话题' style='font-size: 10.990291262136pt;'>ubuntu</a>
+<a href='http://rubyer.me/blog/tag/view' class='tag-link-71' title='2 个话题' style='font-size: 8pt;'>view</a>
+<a href='http://rubyer.me/blog/tag/vim' class='tag-link-76' title='3 个话题' style='font-size: 9.631067961165pt;'>vim</a>
+<a href='http://rubyer.me/blog/tag/%e5%88%86%e9%a1%b5' class='tag-link-17' title='2 个话题' style='font-size: 8pt;'>分页</a>
+<a href='http://rubyer.me/blog/tag/%e5%bc%95%e7%94%a8' class='tag-link-69' title='2 个话题' style='font-size: 8pt;'>引用</a>
+<a href='http://rubyer.me/blog/tag/%e6%9d%be%e6%9c%ac%e8%a1%8c%e5%bc%98%e7%9a%84%e7%a8%8b%e5%ba%8f%e4%b8%96%e7%95%8c' class='tag-link-133' title='4 个话题' style='font-size: 10.990291262136pt;'>松本行弘的程序世界</a>
+<a href='http://rubyer.me/blog/tag/%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86' class='tag-link-67' title='3 个话题' style='font-size: 9.631067961165pt;'>版本管理</a>
+<a href='http://rubyer.me/blog/tag/%e7%8e%a9' class='tag-link-39' title='2 个话题' style='font-size: 8pt;'>玩</a>
+<a href='http://rubyer.me/blog/tag/%e7%bf%bb%e8%af%91' class='tag-link-14' title='8 个话题' style='font-size: 14.388349514563pt;'>翻译</a>
+<a href='http://rubyer.me/blog/tag/%e8%bf%90%e7%ae%97%e7%ac%a6' class='tag-link-66' title='2 个话题' style='font-size: 8pt;'>运算符</a></div>
+</div><div class="widget widget_recent_comments"><h3>近期评论</h3><ul id="recentcomments"><li class="recentcomments">老宋 发表在《<a href="http://rubyer.me/about/comment-page-1#comment-1040">关于老宋</a>》</li><li class="recentcomments">DD 发表在《<a href="http://rubyer.me/about/comment-page-1#comment-1035">关于老宋</a>》</li><li class="recentcomments">老宋 发表在《<a href="http://rubyer.me/blog/1509/comment-page-1#comment-1031">Windows下安装Ruby on Rails最简单的方法</a>》</li><li class="recentcomments">jay_li 发表在《<a href="http://rubyer.me/blog/1509/comment-page-1#comment-1027">Windows下安装Ruby on Rails最简单的方法</a>》</li><li class="recentcomments">jay_li 发表在《<a href="http://rubyer.me/blog/1194/comment-page-1#comment-1026">圣诞礼物：淘宝网提供Rubygems镜像</a>》</li></ul></div><div class="widget widget_categories"><h3>文章分类</h3>		<ul>
+	<li class="cat-item cat-item-12"><a href="http://rubyer.me/blog/category/linux-mac" title="查看 Linux/Mac 下的所有文章">Linux/Mac</a> (18)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://rubyer.me/blog/category/rails" title="查看 Rails 下的所有文章">Rails</a> (57)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://rubyer.me/blog/category/ruby-install" title="查看 ROR安装 下的所有文章">ROR安装</a> (16)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://rubyer.me/blog/category/ruby" title="查看 Ruby 下的所有文章">Ruby</a> (46)
+</li>
+	<li class="cat-item cat-item-103"><a href="http://rubyer.me/blog/category/ruby-diary" title="查看 一日一技 下的所有文章">一日一技</a> (15)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://rubyer.me/blog/category/no" title="查看 其它 下的所有文章">其它</a> (16)
+</li>
+		</ul>
+</div><div class="widget widget_links"><h3>我的朋友</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://hisea.me/" title="远在多伦多的Ruby，Rails高手" target="_blank">Hisea</a></li>
+<li><a href="http://www.kennx.net/" title="KennX &#8211; 宝石之力">KennX &#8211; 宝石之力</a></li>
+<li><a href="http://miclle.com/" title="Miclle&#8217;s posts">Miclle&#039;s posts</a></li>
+<li><a href="http://rubyeye.net/" target="_blank">Ruby中文站</a></li>
+<li><a href="http://serholiu.com" title="SErHo的博客">SErHo&#039;s Blog</a></li>
+<li><a href="http://www.nanjingui.com" title="南京UI设计">南京UI设计</a></li>
+<li><a href="http://www.wuhao.me">吴昊个人博客</a></li>
+<li><a href="http://xiaoneit.com" title="一个北京百度的朋友" target="_blank">坚持就是胜利</a></li>
+<li><a href="http://www.506c.com/" target="_blank">够戏网</a></li>
+<li><a href="http://www.kdefan.com" target="_blank">天空之城</a></li>
+
+	</ul>
+</div>
+
+<!-- showcase 2 -->
+
+</div>
+<!-- sidebar END -->
+
+	<div class="fixed"></div>
+
+	<!-- footer START -->
+	<div id="footer">
+		<div id="about">
+			Powered by <a href="http://wordpress.org/">WordPress</a>			 | Theme by <a href="http://www.neoease.com/">NeoEase</a>			 | Owned by <a href="/about">老宋</a>		</div>
+		<ul id="admin">
+			<li><a href="http://rubyer.me/wp-login.php?action=register">注册</a></li>			<li><a href="http://rubyer.me/wp-login.php">登录</a></li>
+			<li id="gotop"><a href="#" onclick="MGJS.goTop();return false;">置顶</a></li>
+		</ul>
+		<div class="fixed"></div>
+	</div>
+	<!-- footer END -->
+
+</div>
+<!-- content END -->
+
+		</div><!-- container -->
+	</div><!-- wrap -->
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2bf8cbf4e32e162a6ed451d4ff1eb4b3' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23642229-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script><script type='text/javascript' src='http://rubyer.me/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/shCore.js?ver=2.1.364'></script>
+<script type='text/javascript' src='http://rubyer.me/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/shBrushRuby.js?ver=2.1.364'></script>
+<script type='text/javascript' src='http://rubyer.me/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/shBrushXml.js?ver=2.1.364'></script>
+<script type='text/javascript' src='http://rubyer.me/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/shBrushBash.js?ver=2.1.364'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://rubyer.me/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shCore.css?ver=2.1.364";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://rubyer.me/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shThemeDefault.css?ver=2.1.364";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.clipboardSwf = 'http://rubyer.me/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings.expandSource = 'show source';
+	SyntaxHighlighter.config.strings.viewSource = '查看源代码';
+	SyntaxHighlighter.config.strings.copyToClipboard = '复制到剪贴板';
+	SyntaxHighlighter.config.strings.copyToClipboardConfirmation = '代码现在在你的剪贴板';
+	SyntaxHighlighter.config.strings.print = '打印';
+	SyntaxHighlighter.config.strings.help = '帮助';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = '无法找到Brush：';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush不能设置 html-script选项';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.all();
+</script>
+
+</body>
+</html>
+
+<!-- Dynamic page generated in 0.992 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-04-04 20:14:52 -->
+<!-- super cache -->
