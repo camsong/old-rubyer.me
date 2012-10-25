@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://rubyer.me
+title: Ruby 迷
+subtitle: 关注Ruby, Rails开发技术博客
+author: Cam Song
 simple_search: http://google.com/search
-description:
+description: Ruby迷，是一个专注于Ruby、Ruby on Rails、Ruby off Rails、Ruby框架、国外技术文章翻译等的原创Ruby技术博客
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -19,7 +19,7 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+email: neosoyn@gmail.com
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -69,7 +69,11 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: cam_song
+twitter_tweet_count: 4
+twitter_show_replies: false
+twitter_follow_button: true
+twitter_show_follower_count: false
 twitter_tweet_button: true
 
 # Google +1
