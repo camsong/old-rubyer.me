@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/common.css" rel="stylesheet" type="text/css" />
 
-<link rel="shortcut icon" href="qcon_favicon.ico" />
 <title></title>
+<style>
+#page_content strong {font-size: 1.2em; font-weight: bold;}
+</style>
 </head>
 <body>
-
+<div id="page_content">
 <span class="page_content2" style="margin-left:10px;">
       <div>
 
@@ -19,31 +20,13 @@
 
 <h2>什么是Cloud Foundry</h2>
 
-<p>Cloud Foundry（<a href="http://e.weibo.com/u/2169336083">@CloudFoundry</a>）是一个开源的平台即服务产品，它提供给开发者自由度去选择云平台，开发框架和应用服务。Cloud Foundry最初由VMware 发起，得到了业界广泛的支持，它使得开发者能够更快更容易的开发，测试，部署和扩展应用。Cloud Foundry是一个开源项目，用户可以使用多种私有云发行版，也可以使用公共云服务，包括<a href="http://www.cloudfoundry.com">http://www.cloudfoundry.com。</a></p>
+<p>Cloud Foundry 是一个开源的平台即服务产品，它提供给开发者自由度去选择云平台，开发框架和应用服务。Cloud Foundry最初由VMware 发起，得到了业界广泛的支持，它使得开发者能够更快更容易的开发，测试，部署和扩展应用。Cloud Foundry是一个开源项目，用户可以使用多种私有云发行版，也可以使用公共云服务，包括<a href="http://www.cloudfoundry.com">http://www.cloudfoundry.com。</a></p>
 
 <h2>活动规则</h2>
 
-<p>在www.cloudfoundry.com注册账号并成功上传应用程序，即可凭账号ID和应用URL换取Cloud Foundry主题卫衣一件。具体的操作步骤和注意事项请阅读QCon会刊手册（现场注册时领取）。</p>
+<p>在<a href="http://www.cloudfoundry.com">www.cloudfoundry.com</a>注册账号并成功上传应用程序，即可凭账号ID和应用URL换取Cloud Foundry主题卫衣一件。具体的操作步骤和注意事项请阅读后续文档。</p>
 
-<h2>活动时间</h2>
-
-<p>2012年10月25号~10月27号</p>
-
-<p>在QCon杭州会议上，10月25日PaaS引擎专场和社区沙龙将有Cloud Foundry技术演讲和启动营活动的详细介绍，欢迎到场提问交流。大会期间Cloud Foundry展区也设置了技术支持专区，如果您遇到应用开发或上传的问题，请前往展区跟Cloud Foundry的工程师交流。</p>
-
-<h2>参考日程</h2>
-
-<p>6:30 - 7:15 CF启动营演讲  （供简餐，供水）</p>
-
-<p>7:15 - 7:30 Q/A</p>
-
-<p>7:30 开始往里端啤酒，乐队开始调试设备</p>
-
-<p>8:00 乐队开始演奏 活动正式开始</p>
-
-<p>地点：新闻发布厅</p>
-
-<p><img src="http://ww4.sinaimg.cn/large/8bda468ajw1dxnvt72uroj.jpg" alt="" width="300px"></p>
+<p><img src="http://ww4.sinaimg.cn/large/8bda468ajw1dxnvt72uroj.jpg" alt="" width="600px"></p>
 
 <p> </p>
 
@@ -54,9 +37,9 @@
 
 <p>访问网址 <a href="https://my.cloudfoundry.com/signup/cfcn">https://my.cloudfoundry.com/signup/cfcn</a> 注册Cloud Foundry PaaS平台账号。请确保在Promo Code框中输入推广码cfcn，以便快速获得账号。无推广码的情况下申请账号需要24-48小时的审核时间。</p>
 
-<p><img src="http://infoqhelp-ha.stor.sinaapp.com/1.png" width="300px" alt=""></p>
+<p><img src="http://infoqhelp-ha.stor.sinaapp.com/1.png" width="600px" alt=""></p>
 
-<p> <img src="http://infoqhelp-ha.stor.sinaapp.com/_2.png" width="300px" alt=""></p>
+<p> <img src="http://infoqhelp-ha.stor.sinaapp.com/_2.png" width="600px" alt=""></p>
 
 <p>注册完成后的几分钟内，您将收到主题为“Welcome to Cloud Foundry - Your signup is approved!”，内有登陆Cloud Foundry平台的用户名和密码。</p>
 
@@ -67,6 +50,7 @@
 <p>请根据Cloud Foundry开发者文档中的步骤，安装vmc工具或者Eclipse/STS插件。</p>
 
 <p>安装vmv工具：<a href="http://docs.cloudfoundry.com/tools/vmc/vmc.html">http://docs.cloudfoundry.com/tools/vmc/vmc.html</a>
+    <br/>
 安装Eclipse/STS插件：<a href="http://docs.cloudfoundry.com/tools/STS/sts-eclipse.html">http://docs.cloudfoundry.com/tools/STS/sts-eclipse.html</a></p>
 
 <p>vmc依赖Ruby运行环境，以下是Windows、Mac OS和Ubuntu下Ruby运行环境的安装方式，具体步骤，也可以参考上面的链接。</p>
@@ -77,10 +61,12 @@
 
 <blockquote><p>prompt&gt; gem update --system</p></blockquote>
 
-<p><strong>Mac OS </strong></p>
+<p><strong>Mac OS X</strong></p>
 
 <p>OS X 10.5 或者更高版本的Mac OS X 已经安装了Ruby 和RubyGems。如果你使用老版本的OS X，可以通过以下链接下载最新Ruby和RubyGems
+<br/>
 Ruby：<a href="http://www.ruby-lang.org/en/downloads">http://www.ruby-lang.org/en/downloads</a>
+<br/>
 RubyGems：<a href="http://rubygems.org/pages/download">http://rubygems.org/pages/download</a></p>
 
 <p><strong>Ubuntu</strong></p>
@@ -89,23 +75,15 @@ RubyGems：<a href="http://rubygems.org/pages/download">http://rubygems.org/page
 
 <ol>
 <li>安装 Ruby包和RubyGems:</li>
-</ol>
-
-
 <blockquote><p>prompt$ sudo apt-get install ruby-full rubygems</p></blockquote>
 
-<ol>
 <li>测试一下gem 命令是否已经在path中:</li>
-</ol>
-
-
 <blockquote><p>prompt$ which gem</p></blockquote>
 
 <p>如果gem命令没有发现，更新一下你的PATH环境变量，比如，你可以通过下面命令更新你的.bashrc文件:</p>
 
 <blockquote><p>export PATH=$PATH:/var/lib/gems/1.8/bin</p></blockquote>
 
-<ol>
 <li>更新RubyGems:</li>
 </ol>
 
@@ -113,19 +91,20 @@ RubyGems：<a href="http://rubygems.org/pages/download">http://rubygems.org/page
 <p>Ubuntu 10.04</p>
 
 <blockquote><p>prompt$ sudo gem install rubygems-update
+    <br/>
 prompt$ sudo /var/lib/gems/1.8/bin/update_rubygems</p></blockquote>
 
 <p>Ubuntu 11.10</p>
 
-<blockquote><p>prompt$ sudo su -
-prompt# export REALLY_GEM_UPDATE_SYSTEM=true
-prompt# gem update --system
+<blockquote><p>prompt$ sudo su -<br/>
+prompt# export REALLY_GEM_UPDATE_SYSTEM=true<br/>
+prompt# gem update --system<br/>
 prompt# exit</p></blockquote>
 
 <p>安装vmc</p>
 
-<blockquote><p>prompt$ sudo gem install vmc       Mac/Ubuntuo平台
-prompt&gt; gem install vmc            Windows平台</p></blockquote>
+<blockquote><p>prompt$ sudo gem install vmc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mac/Ubuntuo平台<br/>
+prompt&gt; gem install vmc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows平台</p></blockquote>
 
 <p>使用vmc命令</p>
 
@@ -133,15 +112,15 @@ prompt&gt; gem install vmc            Windows平台</p></blockquote>
 
 <blockquote><p>prompt$ vmc target api.cloudfoundry.com</p></blockquote>
 
-<p><img src="http://infoqhelp-ha.stor.sinaapp.com/2.png" width="300px" alt=""></p>
+<p><img src="http://infoqhelp-ha.stor.sinaapp.com/2.png" width="600px" alt=""></p>
 
 <p>获得平台的基本信息</p>
 
-<blockquote><p>prompt$ vmc login
-prompt$ vmc info
-prompt$ vmc passwd&gt;</p></blockquote>
+<blockquote><p>prompt$ vmc login<br/>
+prompt$ vmc info<br/>
+prompt$ vmc passwd</p></blockquote>
 
-<p><img src="http://infoqhelp-ha.stor.sinaapp.com/3.png" width="300px" alt=""></p>
+<p><img src="http://infoqhelp-ha.stor.sinaapp.com/3.png" width="600px" alt=""></p>
 
 <p>如果以上命令都可以正常运行，表明您的vmc工具成功安装，您可以着手开发应用程序了！</p>
 
@@ -153,6 +132,7 @@ prompt$ vmc passwd&gt;</p></blockquote>
 
 <p>如果需要参考开发者文档，请访问以下内容
 语言和框架支持：<a href="http://docs.cloudfoundry.com/frameworks.html">http://docs.cloudfoundry.com/frameworks.html</a>
+<br/>
 后端服务的支持和绑定方法：<a href="http://docs.cloudfoundry.com/services.html">http://docs.cloudfoundry.com/services.html</a></p>
 
 <p>部分Cloud Foundry演示代码位置</p>
@@ -161,13 +141,13 @@ prompt$ vmc passwd&gt;</p></blockquote>
 
 <p><a href="https://github.com/cloudfoundry-samples">https://github.com/cloudfoundry-samples</a></p>
 
-<p>有关应用程序开发的更多细节，请参考Cloud Foundry中文培训课程，您可以在http://cloudfoundry.csdn.net/download.html 下载课程的PPT和视频。另外，在10月25日下午PaaS引擎专场和晚上社区沙龙中，我们也将具体介绍应用开发的细节。</p>
+<p>有关应用程序开发的更多细节，请参考Cloud Foundry中文培训课程，您可以在<a href="http://cloudfoundry.csdn.net/download.html">http://cloudfoundry.csdn.net/download.html</a>下载课程的PPT和视频。另外，在10月25日下午PaaS引擎专场和晚上社区沙龙中，我们也将具体介绍应用开发的细节。</p>
 
 <h3><strong>第四步：使用vmc或Eclipse/STS Cloud Foundry插件上传应用</strong></h3>
 
 <p>使用vmc push即可上传应用程序，帮助文档请参考<a href="http://docs.cloudfoundry.com/tools/vmc/vmc-quick-ref.html">http://docs.cloudfoundry.com/tools/vmc/vmc-quick-ref.html</a></p>
 
-<p> <img src="http://infoqhelp-ha.stor.sinaapp.com/4.png" width="300px" alt=""></p>
+<p> <img src="http://infoqhelp-ha.stor.sinaapp.com/4.png" width="600px" alt=""></p>
 
 <p>完成后，请在<a href="http://www.cloudfoundry.com">Cloud Foundry</a>会议手册里填写下面表格并撕下交给<a href="http://www.cloudfoundry.com">Cloud Foundry</a>展台工作人员，确认验证后，即可为您赠送Cloud Foundry主题卫衣一件。</p>
 
@@ -256,11 +236,12 @@ prompt$ vmc passwd&gt;</p></blockquote>
 <a href="http://docs.cloudfoundry.com/tools/vmc/installing-vmc.html">http://docs.cloudfoundry.com/tools/vmc/installing-vmc.html</a></p>
 
 <p>安装好vmc工具，就可以对Cloud Foundry进行操作了。在终端下输入命令
+    <br/>
 vmc target api.cloudfoundry.com</p>
 
 <p>连接成功后，你可以通过vmc info查看CF 平台的信息.</p>
 
-<p><img src="http://infoqhelp-ha.stor.sinaapp.com/5.png" width="300px" alt=""></p>
+<p><img src="http://infoqhelp-ha.stor.sinaapp.com/5.png" width="600px" alt=""></p>
 
 <p>接下来部署一个Hello World的测试应用上去</p>
 
@@ -282,16 +263,16 @@ vmc target api.cloudfoundry.com</p>
 
 <p>然后在当前目录下使用vmc  push命令,这个过程会问你使用多少内存，是否需要服务等等</p>
 
-<p><img src="http://infoqhelp-ha.stor.sinaapp.com/6.png" width="300px" alt=""></p>
+<p><img src="http://infoqhelp-ha.stor.sinaapp.com/6.png" width="600px" alt=""></p>
 
 <p>部署成功以后，在浏览器里面输入URL就可以访问刚才部署的应用了。</p>
 
 <p>通过vmc apps命令就可以看到所有应用的运行状态</p>
 
-<p><img src="http://infoqhelp-ha.stor.sinaapp.com/7.png" width="300px" alt=""></p>
+<p><img src="http://infoqhelp-ha.stor.sinaapp.com/7.png" width="600px" alt=""></p>
 
   </div>
   </span>
-
+</div>
 </body>
 </html>
