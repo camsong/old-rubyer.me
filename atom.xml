@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby 迷]]></title>
   <link href="http://rubyer.me/atom.xml" rel="self"/>
   <link href="http://rubyer.me/"/>
-  <updated>2012-12-12T15:24:45+08:00</updated>
+  <updated>2012-12-12T15:26:21+08:00</updated>
   <id>http://rubyer.me/</id>
   <author>
     <name><![CDATA[Cam Song]]></name>
@@ -36,7 +36,7 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>rackup ~/config.ru</span></code></pre></td></tr></table></div></figure>
 
 
-<p>如果觉得命令长就建立alias<code>alias rp='rackup ~/config.ru'</code>。</p>
+<p>如果觉得命令长就建立alias <code>alias rp='rackup ~/config.ru'</code></p>
 
 <p>默认启动的server端口是9292，<code>-p [port_num]</code>可以修改端口号，打开浏览器即可当前目录的文件列表：
 <a href="http://locahost:9292/">http://locahost:9292/</a></p>
