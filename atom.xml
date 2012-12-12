@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby 迷]]></title>
   <link href="http://rubyer.me/atom.xml" rel="self"/>
   <link href="http://rubyer.me/"/>
-  <updated>2012-10-27T17:01:37+08:00</updated>
+  <updated>2012-12-12T15:21:26+08:00</updated>
   <id>http://rubyer.me/</id>
   <author>
     <name><![CDATA[Cam Song]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Simple HTTP Server with Rack]]></title>
+    <link href="http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack/"/>
+    <updated>2012-12-12T14:56:00+08:00</updated>
+    <id>http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack</id>
+    <content type="html"><![CDATA[<p>实现在任意目录启动一个http server并把当前目录做为web根目录，类似Python的SimpleHTTPServer。</p>
+
+<p>2步搞定：</p>
+
+<h3>1. 安装rack，并新建rack配置文件config.ru：</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install rack
+</span><span class='line'>echo "run Rack::Directory.new('')" &gt; ~/config.ru</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. 切换到任意目录运行</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rackup ~/config.ru</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果觉得命令长就建立alias<code>alias rp='rackup ~/config.ru'</code>。</p>
+
+<p>默认启动的server端口是9292，<code>-p [port_num]</code>可以修改端口号，打开浏览器即可当前目录的文件列表：</p>
+
+<p>  http://locahost:9292/</p>
+
+<h3>Appendix: rack and rackup</h3>
+
+<h4>Rack:</h4>
+
+<p>Rack provides a minimal, modular and adaptable interface for developing web applications in Ruby. By wrapping HTTP requests and responses in the simplest way possible, it unifies and distills the API for web servers, web frameworks, and software in between (the so-called middleware) into a single method call.</p>
+
+<h4>Rackup:</h4>
+
+<p>Rackup is a useful tool for running Rack applications, which uses the Rack::Builder DSL to configure middleware and build up applications easily.</p>
+
+<h3>Thanks to</h3>
+
+<p><a href="http://blog.samsonis.me/2010/02/rubys-python-simplehttpserver/">http://blog.samsonis.me/2010/02/rubys-python-simplehttpserver/</a></p>
+
+<p><a href="https://github.com/rack/rack">https://github.com/rack/rack</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Advanced Rails debug]]></title>
