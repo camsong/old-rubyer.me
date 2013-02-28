@@ -4,10 +4,10 @@
 
 url: http://rubyer.me
 title: Ruby 迷
-subtitle: 关注Ruby, Rails开发技术博客
+subtitle: 关注Ruby, Rails, JavaScript开发技术博客
 author: Cam Song
 simple_search: http://google.com/search
-description: Ruby迷，是一个专注于Ruby、Ruby on Rails、Ruby off Rails、Ruby框架、国外技术文章翻译等的原创Ruby技术博客
+description: Ruby迷，是一个专注于Ruby、Ruby on Rails、Ruby off Rails、Sinatra、JavaScript、Node、Node.js、JavaScript MVC等的原创Ruby技术博客
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
