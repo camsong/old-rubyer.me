@@ -5,7 +5,16 @@ date: 2012-12-12 14:56
 comments: true
 categories: 
 ---
-实现在任意目录启动一个http server并把当前目录做为web根目录，类似Python的SimpleHTTPServer。
+最近使用JavaScript比较多，如果是静态页面，Chrome AJAX请求本地文件经常会出现。
+```
+XMLHttpRequest cannot load
+file:///*******. 
+Origin null is not allowed by Access-Control-Allow-Origin.
+```
+这里因为Chrome安全机制不允许AJAX加载本地文件，你可以启动Chrome时加参数`chrome.exe --allow-file-access-from-files`。
+但我不喜欢这种方法，偏好启动一个web server。
+
+Python 2.\* 的做法是`python -m SimpleHTTPServer`，Python 3.\* 的做法是`python -m http.server`，Ruby的做法也非常简单。
 
 2步搞定：
 
