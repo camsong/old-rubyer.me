@@ -2,22 +2,26 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache/</loc>
-        <lastmod>2012-10-25T19:14:24+08:00</lastmod>
+        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyer.me/blog/2012/09/18/advanced-rails-debug/</loc>
-        <lastmod>2012-10-25T19:04:12+08:00</lastmod>
+        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack/</loc>
-        <lastmod>2012-12-13T23:14:04+08:00</lastmod>
+        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyer.me/blog/archives/</loc>
-        <lastmod>2012-12-13T23:14:04+08:00</lastmod>
+        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyer.me/</loc>
-        <lastmod>2012-12-13T23:14:04+08:00</lastmod>
+        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://rubyer.me/robots.txt</loc>
+        <lastmod>2013-12-21T22:54:25+08:00</lastmod>
     </url>
 </urlset>

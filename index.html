@@ -22,13 +22,14 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rubyer.me/">
+  <link rel="canonical" href="http://rubyer.me">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Ruby 迷" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -44,13 +45,6 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script>
-
-
-  
-  <script type="text/javascript">
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2bf8cbf4e32e162a6ed451d4ff1eb4b3' type='text/javascript'%3E%3C/script%3E"));
   </script>
 
 
@@ -410,7 +404,7 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
 <h4>Two Big Problems</h4>
 
 <blockquote><p>There are only two hard problems in Computer Science: cache
-invalidation and naming things. - Phil Karlton</p></blockquote>
+invalidation and naming things. &ndash; Phil Karlton</p></blockquote>
 
 <p>Fortunately, Rails has made it perfect!</p>
 
@@ -615,7 +609,7 @@ Cache-Control)</li>
 <li>为所有缓存使用自动过期的key。</li>
 <li>经常把 <code>belongs to</code> 和 <code>:touch =&gt; true</code> 结合使用</li>
 <li>使用 <code>Rails.cache</code> 来缓存查询到的数据</li>
-<li>在每次部署应用后不要忘记设置ENV[&#8216;RAILS_APP_VERSION&#8217;]</li>
+<li>在每次部署应用后不要忘记设置ENV[&lsquo;RAILS_APP_VERSION&rsquo;]</li>
 <li>一定要缓存你的assets静态文件。</li>
 <li>缓存粒度一定要小，以此提高命中率</li>
 </ul>
@@ -655,15 +649,15 @@ Cache-Control)</li>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/12/12/ruby-simple-http-server-with-rack/">Ruby Simple HTTP Server with Rack</a>
+        <a href="/blog/2012/12/12/ruby-simple-http-server-with-rack/">Ruby Simple HTTP Server With Rack</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/18/advanced-rails-debug/">Advanced Rails debug</a>
+        <a href="/blog/2012/09/18/advanced-rails-debug/">Advanced Rails Debug</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/09/04/speed-up-with-rails-cache/">Speed up with Rails cache</a>
+        <a href="/blog/2012/09/04/speed-up-with-rails-cache/">Speed Up With Rails Cache</a>
       </li>
     
   </ul>
@@ -692,15 +686,12 @@ Cache-Control)</li>
 <section>
   <h1>Friend Sites</h1>
   <ul>
-    <li><a href="http://www.wuhao.me/">吴昊个人博客</a></li>
-    <li><a href="http://rubyeye.net/" target="_blank">Ruby中文站</a></li>
-    <li><a href="http://miclle.com/" title="Miclle’s posts">Miclle&#8217;s posts</a></li>
+    <li><a href="http://miclle.com/" title="Miclle’s posts" target="_blank">Miclle&#8217;s posts</a></li>
     <li><a href="http://www.nginxs.com/" target="_blank">Eric&#8217;s linux and nginx!</a></li>
-    <li><a href="http://serholiu.com/" title="SErHo的博客">SErHo&#8217;s Blog</a></li>
-    <li><a href="http://www.nanjingui.com/" title="南京UI设计">南京UI设计</a></li>
+    <li><a href="http://serholiu.com/" title="SErHo的博客" target="_blank">SErHo&#8217;s Blog</a></li>
+    <li><a href="http://www.nanjingui.com/" title="南京UI设计" target="_blank">南京UI设计</a></li>
     <li><a href="http://www.506c.com/" target="_blank">够戏网</a></li>
     <li><a href="http://blog.warmcolor.net/" title="温暖色调的博客, 生活,学习,山地车,骑行,Linux,服务器" target="_blank">温暖色调</a></li>
-    <li><a href="http://www.crackedzone.com/" title="Lancer, 一个分享Web应用, 自学PHP开发的空间" target="_blank">CrackedZone</a></li>
   </ul>
 </section>
 
@@ -725,7 +716,7 @@ Cache-Control)</li>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -741,7 +732,7 @@ Cache-Control)</li>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
