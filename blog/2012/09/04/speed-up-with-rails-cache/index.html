@@ -1,12 +1,111 @@
-<p>we&mdash;&ndash;
-layout: post
-title: &ldquo;Speed up with Rails cache&rdquo;
-date: 2012-09-04 10:51
-comments: true</p>
 
-<h2>categories: </h2>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Speed Up With Rails Cache - Ruby 迷</title>
+  <meta name="author" content="Cam Song">
 
-<p>这是我在<a href="http://ruby-china.org/topics/5281">Ruby Tuesday</a>上分享的记录，介绍Rails缓存的使用方法</p>
+  
+  <meta name="description" content="这是我在Ruby Tuesday上分享的记录，介绍Rails缓存的使用方法 Two Big Problems There are only two hard problems in Computer Science: cache
+invalidation and naming things. & &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ruby 迷" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23642229-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ruby 迷</a></h1>
+  
+    <h2>关注Ruby, Rails, JavaScript开发技术博客</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:rubyer.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/index2.html">旧版入口</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Speed Up With Rails Cache</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-04T10:51:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>这是我在<a href="http://ruby-china.org/topics/5281">Ruby Tuesday</a>上分享的记录，介绍Rails缓存的使用方法</p>
 
 <h4>Two Big Problems</h4>
 
@@ -229,3 +328,173 @@ Cache-Control)</li>
 <p><a href="http://guides.rubyonrails.org/caching_with_rails.html">http://guides.rubyonrails.org/caching_with_rails.html</a></p>
 
 <p><a href="http://railslab.newrelic.com/scaling-rails">http://railslab.newrelic.com/scaling-rails</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Cam Song</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-04T10:51:00+08:00" pubdate data-updated="true">Sep 4<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache/" data-via="cam_song" data-counturl="http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/09/18/advanced-rails-debug/" title="Next Post: Advanced Rails debug">Advanced Rails debug &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p><img src="http://www.gravatar.com/avatar/ab989bfcd6ed51d34250507f7a248653.png" alt="cam song's avatar"></p>
+  <p>Howdy, I'm Cam Song(Song Shaoyin) from Shanghai, China.</p>
+  <p>I'm a splendid chap speaking ruby, rails and javascript.</p>
+  <p>Find more on <a href="http://github.com/camsong">Github</a>, <a href="http://cn.linkedin.com/pub/cam-song/57/b42/b55/">Linkedin</a>, <a href="https://twitter.com/cam_song">Twitter</a>, <a href="http://ruby-china.org/camel">Ruby China</a></p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/20/chrome-extensions-guide-overview/">GitHub Mate: 单文件下载更方便</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/12/ruby-simple-http-server-with-rack/">Ruby Simple HTTP Server With Rack</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/18/advanced-rails-debug/">Advanced Rails Debug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/04/speed-up-with-rails-cache/">Speed Up With Rails Cache</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("cam_song", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/cam_song" class="twitter-follow-button" data-show-count="false">Follow @cam_song</a>
+  
+</section>
+
+
+
+
+<section>
+  <h1>Friend Sites</h1>
+  <ul>
+    <li><a href="http://miclle.com/" title="Miclle’s posts" target="_blank">Miclle's posts</a></li>
+    <li><a href="http://www.nginxs.com/" target="_blank">Eric's linux and nginx!</a></li>
+    <li><a href="http://serholiu.com/" title="SErHo的博客" target="_blank">SErHo's Blog</a></li>
+    <li><a href="http://www.nanjingui.com/" title="南京UI设计" target="_blank">南京UI设计</a></li>
+    <li><a href="http://www.506c.com/" target="_blank">够戏网</a></li>
+    <li><a href="http://blog.warmcolor.net/" title="温暖色调的博客, 生活,学习,山地车,骑行,Linux,服务器" target="_blank">温暖色调</a></li>
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Cam Song -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'camsong';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache/';
+        var disqus_url = 'http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

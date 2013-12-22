@@ -4,7 +4,7 @@
   <title><![CDATA[Ruby 迷]]></title>
   <link href="http://rubyer.me/atom.xml" rel="self"/>
   <link href="http://rubyer.me/"/>
-  <updated>2013-12-22T23:09:27+08:00</updated>
+  <updated>2013-12-22T23:39:17+08:00</updated>
   <id>http://rubyer.me/</id>
   <author>
     <name><![CDATA[Cam Song]]></name>
@@ -279,17 +279,9 @@ Git 本身不像 SVN 支持目录或文件克隆，所以对于体积大的项�
   <entry>
     <title type="html"><![CDATA[Speed Up With Rails Cache]]></title>
     <link href="http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache/"/>
-    <updated>2012-09-04T00:00:00+08:00</updated>
+    <updated>2012-09-04T10:51:00+08:00</updated>
     <id>http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache</id>
-    <content type="html"><![CDATA[<p>we&mdash;&ndash;
-layout: post
-title: &ldquo;Speed up with Rails cache&rdquo;
-date: 2012-09-04 10:51
-comments: true</p>
-
-<h2>categories: </h2>
-
-<p>这是我在<a href="http://ruby-china.org/topics/5281">Ruby Tuesday</a>上分享的记录，介绍Rails缓存的使用方法</p>
+    <content type="html"><![CDATA[<p>这是我在<a href="http://ruby-china.org/topics/5281">Ruby Tuesday</a>上分享的记录，介绍Rails缓存的使用方法</p>
 
 <h4>Two Big Problems</h4>
 
