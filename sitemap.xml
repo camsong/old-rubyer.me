@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://rubyer.me/blog/2012/09/04/speed-up-with-rails-cache/</loc>
-        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
+        <lastmod>2013-12-22T22:59:58+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyer.me/blog/2012/09/18/advanced-rails-debug/</loc>
@@ -13,12 +13,16 @@
         <lastmod>2013-12-21T22:31:32+08:00</lastmod>
     </url>
     <url>
+        <loc>http://rubyer.me/blog/2013/12/20/chrome-extensions-guide-overview/</loc>
+        <lastmod>2013-12-22T23:08:53+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://rubyer.me/blog/archives/</loc>
-        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
+        <lastmod>2013-12-22T23:08:53+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyer.me/</loc>
-        <lastmod>2013-12-21T22:31:32+08:00</lastmod>
+        <lastmod>2013-12-22T23:08:53+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyer.me/robots.txt</loc>

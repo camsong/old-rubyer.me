@@ -5,15 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ruby Simple HTTP Server With Rack - Ruby 迷</title>
+  <title>GitHub Mate: 单文件下载更方便 - Ruby 迷</title>
   <meta name="author" content="Cam Song">
 
   
-  <meta name="description" content="最近使用JavaScript比较多，如果是静态页面，Chrome AJAX请求本地文件经常会出现。 1
-2
-3
-XMLHttpRequest cannot load
-file:///*******. Origin null is not allowed by Access-Control- &hellip;">
+  <meta name="description" content="GitHub 不是 Dropbox，GitHub 侧重的是代码分享，而不是文件存储，比如曾经有的文档上传功能也被砍掉了 Goodbye, Uploads。 而且 GitHub 还有意让文件下载复杂化，每次想下载一个文件都要右键Raw，然后目标另存为，请问还能做的再麻烦一点吗。
+Git 本身不像 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +19,7 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack">
+  <link rel="canonical" href="http://rubyer.me/blog/2013/12/20/chrome-extensions-guide-overview">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ruby 迷" type="application/atom+xml">
@@ -85,7 +82,7 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Ruby Simple HTTP Server With Rack</h1>
+      <h1 class="entry-title">GitHub Mate: 单文件下载更方便</h1>
     
     
       <p class="meta">
@@ -101,64 +98,34 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
   
 
 
-<time datetime="2012-12-12T14:56:00+08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2012</time>
+<time datetime="2013-12-20T20:31:55+08:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>最近使用JavaScript比较多，如果是静态页面，Chrome AJAX请求本地文件经常会出现。</p>
+<div class="entry-content"><p>GitHub 不是 Dropbox，GitHub 侧重的是代码分享，而不是文件存储，比如曾经有的文档上传功能也被砍掉了 <a href="https://github.com/blog/1302-goodbye-uploads">Goodbye, Uploads</a>。 而且 GitHub 还有意让文件下载复杂化，每次想下载一个文件都要右键Raw，然后目标另存为，请问还能做的再麻烦一点吗。
+Git 本身不像 SVN 支持目录或文件克隆，所以对于体积大的项目，又是网速差的环境只能==了。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>XMLHttpRequest cannot load
-</span><span class='line'>file:///*******. 
-</span><span class='line'>Origin null is not allowed by Access-Control-Allow-Origin.</span></code></pre></td></tr></table></div></figure>
+<p>所以才写了 <a href="https://chrome.google.com/webstore/detail/github-mate/baggcehellihkglakjnmnhpnjmkbmpkf">GitHub Mate</a> 这个 Chrome 插件，源码逻辑很简单。</p>
 
+<p>目前有两个功能，一个是点击文件图标下载文件，实现逻辑在<a href="https://github.com/camsong/chrome-github-mate/blob/master/script.js#L3">这里</a>。
+主要有3步：</p>
 
-<p>这里因为Chrome安全机制不允许AJAX加载本地文件，你可以启动Chrome时加参数<code>chrome.exe --allow-file-access-from-files</code>。
-但我不喜欢这种方法，偏好启动一个web server。</p>
-
-<p>Python 2.* 的做法是<code>python -m SimpleHTTPServer</code>，Python 3.* 的做法是<code>python -m http.server</code>，Ruby的做法也非常简单。</p>
-
-<p>2步搞定：</p>
-
-<h3>1. 安装rack，并新建rack配置文件config.ru：</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install rack
-</span><span class='line'>echo "run Rack::Directory.new('')" &gt; ~/config.ru</span></code></pre></td></tr></table></div></figure>
+<ol>
+<li>在 document 上代理所有文件图标上的 click 事件，这样不用分别绑定事件，而且支持 GitHub 的 Pjax。</li>
+<li>根据点击的图标计算出文件的实际下载路径。</li>
+<li>添加一个匿名<code>a</code>标签，并使用HTML5的 <code>download</code> 属性来设置下载路径，模拟点击<code>a</code>标签开始下载。</li>
+</ol>
 
 
-<h3>2. 切换到任意目录运行</h3>
+<p>另一个功能是显示未读通知（notification）数，通过添加一个定时器去抓取notification页面，方法很原始。其实对于我这种不太活跃的所谓“开源爱好者“没啥用处，基本不会有什么通知，以后会做成可选的，节省资源。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rackup ~/config.ru</span></code></pre></td></tr></table></div></figure>
+<p>未来考虑支持文件夹下载，初步想法是找类似 Heroku, Nitrous.io 这种免费的服务来做后台自动clone仓库，并打包文件夹，然后回传地址，这样做实现起来不难，关键是对于大项目延迟会比较大，小项目下载文件夹速度提升又不大，还需要在考虑考虑。</p>
 
-
-<p>如果觉得命令长就建立alias <code>alias rp='rackup ~/config.ru'</code></p>
-
-<p>默认启动的server端口是9292，<code>-p [port_num]</code>可以修改端口号，打开浏览器即可当前目录的文件列表：
-<a href="http://locahost:9292/">http://locahost:9292/</a></p>
-
-<h3>Appendix: rack and rackup</h3>
-
-<h4>Rack:</h4>
-
-<p>Rack provides a minimal, modular and adaptable interface for developing web applications in Ruby. By wrapping HTTP requests and responses in the simplest way possible, it unifies and distills the API for web servers, web frameworks, and software in between (the so-called middleware) into a single method call.</p>
-
-<h4>Rackup:</h4>
-
-<p>Rackup is a useful tool for running Rack applications, which uses the Rack::Builder DSL to configure middleware and build up applications easily.</p>
-
-<h3>Thanks to</h3>
-
-<p><a href="http://blog.samsonis.me/2010/02/rubys-python-simplehttpserver/">http://blog.samsonis.me/2010/02/rubys-python-simplehttpserver/</a></p>
-
-<p><a href="https://github.com/rack/rack">https://github.com/rack/rack</a></p>
+<p>不得不说，Chrome 插件体系设计实在太简洁了，而且对插件(extension)和应用(app)都有很好的支持和细分。
+<a href="https://developer.chrome.com/extensions/getstarted.html">官方文档</a>示例都非常赞。有人说Chrome web store未来会替代Google Play和App Store，目前我只能“呵呵”，以后逆袭也不一定。</p>
 </div>
 
 
@@ -181,7 +148,7 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
   
 
 
-<time datetime="2012-12-12T14:56:00+08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2012</time>
+<time datetime="2013-12-20T20:31:55+08:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
       
 
 
@@ -189,7 +156,7 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack/" data-via="cam_song" data-counturl="http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyer.me/blog/2013/12/20/chrome-extensions-guide-overview/" data-via="cam_song" data-counturl="http://rubyer.me/blog/2013/12/20/chrome-extensions-guide-overview/" >Tweet</a>
   
   
   
@@ -198,10 +165,8 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/09/18/advanced-rails-debug/" title="Previous Post: Advanced Rails debug">&laquo; Advanced Rails debug</a>
+        <a class="basic-alignment left" href="/blog/2012/12/12/ruby-simple-http-server-with-rack/" title="Previous Post: Ruby Simple HTTP Server with Rack">&laquo; Ruby Simple HTTP Server with Rack</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/12/20/chrome-extensions-guide-overview/" title="Next Post: GitHub Mate: 单文件下载更方便">GitHub Mate: 单文件下载更方便 &raquo;</a>
       
     </p>
   </footer>
@@ -298,8 +263,8 @@ file:///*******. Origin null is not allowed by Access-Control- &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack/';
-        var disqus_url = 'http://rubyer.me/blog/2012/12/12/ruby-simple-http-server-with-rack/';
+        var disqus_identifier = 'http://rubyer.me/blog/2013/12/20/chrome-extensions-guide-overview/';
+        var disqus_url = 'http://rubyer.me/blog/2013/12/20/chrome-extensions-guide-overview/';
         var disqus_script = 'embed.js';
       
     (function () {
